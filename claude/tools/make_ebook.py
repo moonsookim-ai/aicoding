@@ -31,6 +31,7 @@ OUT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "
 TITLE = "클로드 완전정복 100단계"
 SUBTITLE = "채팅에서 Claude Code까지, 일을 맡기는 법을 따라 하며 익히는 실전 매뉴얼"
 AUTHOR = "CEO비즈니스스쿨 김문수 교수"
+SITES = ["ceobizschool.kr", "ceoai.kr"]
 BASENAME = "claude-100-steps"
 
 
@@ -185,6 +186,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .cover .s{margin-top:1em;color:var(--sub);font-size:1.1em}
 .cover .a{margin-top:4em;font-weight:700;color:var(--accent)}
 .cover .v{margin-top:1.2em;color:var(--sub);font-size:.95em;letter-spacing:.02em}
+.cover .w{margin-top:.6em;color:var(--navy);font-size:1em;font-weight:600;letter-spacing:.03em}
 .toc ul{list-style:none;padding-left:1em;margin:.2em 0 1em}
 .toc a{text-decoration:none}
 """
@@ -217,7 +219,7 @@ def build():
 
     # ── 한 장짜리 HTML (PDF 원본 겸 웹 열람용)
     cover = ('<section class="cover"><div class="t">%s</div><div class="s">%s</div>'
-             '<div class="a">%s</div><div class="v">v%s · %s 기준</div></section>') % (TITLE, SUBTITLE, AUTHOR, VERSION, VERSION_DATE)
+             '<div class="a">%s</div><div class="w">%s</div><div class="v">v%s · %s 기준</div></section>') % (TITLE, SUBTITLE, AUTHOR, " · ".join(SITES), VERSION, VERSION_DATE)
     body = [cover,
             '<section>%s</section>' % md(front),
             '<section class="toc">%s</section>' % md(toc_md(ol))]
