@@ -144,8 +144,12 @@ Claude Code 입력창에 `/`를 치면 명령 목록이 뜬다. 명령은 버전
 | Zapier의 Claude 연동 | <https://zapier.com/apps/anthropic-claude/integrations> | 75단계 |
 | n8n 문서 | <https://docs.n8n.io> | 75단계 |
 | GitHub 시작하기 | <https://docs.github.com/en/get-started> | 28~29단계 |
-| Cloudflare Pages | <https://pages.cloudflare.com> | 30단계 |
-| Vercel 문서 | <https://vercel.com/docs> | 30단계 |
+| Cloudflare Pages 문서 | <https://developers.cloudflare.com/pages/> | 30~31단계 |
+| Cloudflare Pages Git 연결 | <https://developers.cloudflare.com/pages/get-started/git-integration/> | 30단계 |
+| Cloudflare Pages 되돌리기 | <https://developers.cloudflare.com/pages/configuration/rollbacks/> | 31단계 |
+| Vercel 배포 | <https://vercel.com/docs/deployments> | 30단계 |
+| Vercel 도메인 | <https://vercel.com/docs/domains> | 30단계 |
+| Vercel 즉시 되돌리기 | <https://vercel.com/docs/instant-rollback> | 31단계 |
 | Anthropic 소식 | <https://www.anthropic.com/news> | 99단계 |
 | Anthropic 엔지니어링 블로그 | <https://www.anthropic.com/engineering> | 99단계 |
 | Claude Academy(무료 강좌) | <https://www.anthropic.com/learn> | 전체 |
