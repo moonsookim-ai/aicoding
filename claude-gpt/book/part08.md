@@ -93,6 +93,8 @@ MCP(Model Context Protocol)는 이 문제를 풀려고 Anthropic이 공개한 �
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 연결자를 Claude 앱의 설정에서 추가하고, 대화마다 쓸 연결을 켜고 끕니다. 연결자는 내 계정의 권한 안에서만 보며, Anthropic이 공개한 MCP 규약을 바탕으로 만들어졌습니다.
+
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT에서는 연결 기능이 플러그인 안에 들어 있습니다. Google Drive, Gmail, Slack, GitHub, SharePoint 같은 서비스를 플러그인 속 앱(MCP 서버)으로 연결하고, 입력창에서 `@플러그인이름`으로 불러 씁니다. 관리자 문서에서는 "앱"과 "MCP 서버"를 같은 뜻으로 씁니다. ChatGPT 웹은 플러그인에 든 원격 MCP 도구만 쓰고, 내 컴퓨터에 설정한 로컬 MCP 서버는 Codex 쪽에서 씁니다. 사내 MCP 서버를 시험해 보려면 설정 > Security and login에서 Developer mode를 켜고 ChatGPT Plugins 화면에서 서버를 추가하는데, 계정이나 워크스페이스 정책에 따라 이 메뉴가 없을 수 있습니다. 규격이 같으니 이 단계에서 익힌 도구 목록 읽기와 "하지 않을 일"을 적은 요청서는 ChatGPT에서도 그대로 통합니다.
 
 </div>
@@ -219,6 +221,8 @@ IT팀이 되물을 만한 질문 세 가지를 예상해 끝에 붙여 줘.
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 설정의 연결자 항목에서 Google Drive나 Notion을 고르고, 그 서비스의 로그인 화면에서 회사 계정으로 들어가 접근을 허락합니다. 연결이 끝나면 대화에서 해당 연결을 켜고 부탁합니다.
+
 <span class="label">ChatGPT에서는</span> Google Drive나 SharePoint 같은 문서 창고도 플러그인 속 앱으로 연결하고, 대화에서 `@플러그인이름`으로 지정해 부탁합니다. 이 책이 다루는 서비스가 플러그인 목록에 있는지는 화면에서 확인합니다. 아래 "목록 먼저, 요약은 고른 뒤" 프롬프트는 그대로 넣으면 됩니다. 로그인할 때 회사 계정을 골랐는지 확인하는 것도 똑같습니다.
 
 </div>
@@ -330,6 +334,8 @@ Gmail과 Google Calendar 연결자를 붙이면 Claude가 편지함을 검색해
 메일에는 개인정보와 거래 조건이 뒤섞여 있습니다. 연결하기 전에 회사의 사용 원칙이 메일 연결을 허용하는지 확인합니다. 임원 메일처럼 민감한 편지함이라면 비서나 보좌 인력과 어디까지 읽게 할지 먼저 합의합니다. 일정도 마찬가지입니다. 내 계정에 다른 사람의 일정을 볼 권한이 있다면 Claude도 그 일정을 본다는 점을 기억합시다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> Gmail과 Google Calendar 연결자를 65단계와 같은 순서로 붙이고, 허락 화면에서 메일 읽기, 일정 보기처럼 어떤 권한을 주는지 확인합니다. 연결하기 전에 회사의 사용 원칙이 메일 연결을 허용하는지 봅니다.
 
 <span class="label">ChatGPT에서는</span> Gmail은 ChatGPT에서도 플러그인 속 앱으로 연결해 쓸 수 있습니다. 일정 서비스나 다른 메일 시스템은 플러그인 목록에 있는지 먼저 봅니다. 아래 프롬프트의 "메일은 보내지 마" 같은 문장은 그대로 둡니다. 아침마다 같은 부탁을 한다면 ChatGPT의 Scheduled tasks로 넘길 수 있고, 웹과 모바일에서는 새 메일이 오면 시작하는 작업도 만들 수 있습니다. 이 이야기는 제9부에서 이어 갑니다.
 
@@ -624,6 +630,8 @@ Jira는 Atlassian 연결자로, Zendesk는 Zendesk 연결자로 연결합니다.
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 터미널에서 `claude mcp add --transport http hf https://huggingface.co/mcp`처럼 MCP 서버를 등록한 뒤, 세션 안에서 `/mcp`로 로그인과 연결 상태를 확인합니다. Claude 앱에서는 연결자 목록에서 Hugging Face를 추가하거나 MCP 서버 주소를 사용자 지정 연결자로 넣습니다.
+
 <span class="label">Codex에서는</span> MCP 서버를 `codex mcp add <이름> -- <실행 명령>`으로 등록하거나, 설정 파일 `~/.codex/config.toml`에 `[mcp_servers.<이름>]` 표로 적습니다. 원격 주소로 연결하는 서버(Streamable HTTP)도 지원하고, OAuth 로그인이 필요하면 `codex mcp login <이름>`을 씁니다. 등록된 목록은 `codex mcp list`로, 대화 중에는 `/mcp`로 확인합니다. 데스크톱 앱과 IDE에서는 설정 > MCP servers > Add server로 추가하며, CLI·IDE·앱이 같은 설정을 함께 씁니다. Hugging Face처럼 원격 주소만 주는 서버를 등록하는 정확한 방법은 Codex의 MCP 공식 안내에서 확인합니다.
 
 </div>
@@ -740,6 +748,8 @@ GitHub 연결자를 붙이면 Claude가 저장소의 파일, 변경 이력, 이�
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> GitHub 연결자를 붙여 저장소의 파일, 변경 이력, 이슈, Pull Request를 읽기만 합니다. 허락 화면에서 "선택한 저장소"만 주고, 코드를 고치고 올리는 일은 제3부의 Claude Code에 맡깁니다.
+
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT에서는 GitHub도 플러그인 속 앱으로 연결해 `@플러그인이름`으로 부르고, 아래 읽기 전용 프롬프트를 그대로 씁니다. 개발팀이 Codex를 쓴다면 저장소와의 연결은 한 걸음 더 나아갑니다. Codex 클라우드에 GitHub를 연결해 작업을 맡기고 PR을 열 수 있고, 저장소의 Code review를 켜 두면 PR 댓글에 `@codex review`라고 적어 리뷰를 받습니다. 이 설정에는 저장소 push 또는 admin 권한이 필요하니 개발팀이 맡습니다. 자세한 내용은 36단계에서 다룹니다. 리더가 이 단계에서 할 일은 여전히 읽기뿐입니다.
 
 </div>
@@ -852,6 +862,8 @@ Claude는 쓰기나 보내기 전에 확인을 구하는 경우가 많습니다.
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 연결자가 하는 일을 읽기, 쓰기, 보내기 세 층으로 나눠 읽기는 넓게, 쓰기는 도구 하나와 동작 하나부터 좁게 열고, 보내기는 항상 사람이 마지막에 누릅니다. 쓰기나 보내기 전에 뜨는 확인 창에서는 무엇을, 어디에, 누구에게를 읽습니다.
+
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT 회사 워크스페이스에서는 관리자가 워크스페이스 설정과 Workspace apps 화면에서 쓸 수 있는 플러그인과 MCP 서버, 허용할 동작을 정합니다. 우리 팀 권한 표를 만들 때 이 관리자 설정과 맞춰 봅니다. Codex에서는 MCP 도구를 쓰기 전에 멈추고 물을지를 승인 정책(`approval_policy`)이 정하고, `granular`로 두면 MCP 요청(`mcp_elicitations`) 같은 항목별로 따로 정할 수 있습니다. 어느 쪽이든 보내기는 사람이 누른다는 원칙은 같습니다.
 
 </div>
@@ -945,6 +957,8 @@ Claude는 쓰기나 보내기 전에 확인을 구하는 경우가 많습니다.
 관리자는 막는 것이 일입니다. "편하니까 열어 주세요"로는 열리지 않습니다. 관리자가 궁금한 것은 크게 세 가지입니다. 어떤 자료가 밖으로 나가는가, 누가 쓰는가, 사고가 나면 어떻게 막는가. 요청서에 이 세 질문의 답을 먼저 적어 두면 대화가 짧아집니다. 70단계의 권한 표를 붙이면 마지막 질문의 답이 됩니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 연결이 안 되면 로그인 만료, 관리자 승인, 권한 범위 순서로 봅니다. 로그인이 풀렸으면 설정의 연결자 항목에서 끊었다가 다시 연결하고, 팀 요금제에서 관리자가 막아 두었다면 무엇을 왜 연결하고 싶은지 적은 요청서를 보냅니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT에서도 순서는 같습니다. 플러그인이 목록에 없거나 Developer mode 메뉴가 보이지 않으면 워크스페이스 관리자가 막아 둔 경우가 많으니, 관리자에게 같은 요청서를 보냅니다. ChatGPT 웹은 내 컴퓨터에 설정한 로컬 MCP 서버를 읽지 않으니, 로컬 서버가 안 보이는 것은 고장이 아닙니다. Codex에서 MCP 연결이 안 되면 `/mcp`나 `codex mcp list`로 등록 상태를 보고, 로그인이 풀렸으면 `codex mcp login <이름>`으로 다시 로그인합니다.
 

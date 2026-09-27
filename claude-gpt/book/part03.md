@@ -86,6 +86,8 @@ Claude Code가 바로 이 틈을 메웁니다. 필요한 것을 말로 설명하
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 내 폴더에서 파일을 만들고 고치고 실행하는 일을 맡깁니다. 첫 도구는 틀려도 다시 입력하면 되고, 공개돼도 되는 자료만 들어가고, "누가 언제 무엇을 하려고 쓴다"로 말할 수 있는 것으로 고릅니다.
+
 <span class="label">Codex에서는</span> OpenAI 쪽에서 Claude Code에 해당하는 도구가 Codex입니다. 첫 도구를 고르는 기준은 똑같습니다. 다만 ChatGPT에는 대화하는 Chat, 결과물을 맡기는 Work, 개발을 맡기는 Codex가 나뉘어 있어서, 내 일을 셋 가운데 어디에 맡길지부터 정합니다. 31단계에서 다룹니다.
 
 </div>
@@ -272,6 +274,8 @@ claude
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 공식 설치 명령을 터미널에 붙여 넣어 설치하고, `claude --version`으로 확인한 뒤 작업 폴더에 들어가 `claude`를 켭니다. 로그인은 Claude 계정으로 브라우저에서 하고, 터미널이 부담스러우면 Claude 데스크톱 앱이나 웹에서도 쓸 수 있습니다.
+
 <span class="label">Codex에서는</span> Codex CLI도 공식 설치 스크립트로 설치합니다. npm이나 Homebrew로 설치하는 방법도 있습니다. `codex --version`으로 확인한 뒤 작업 폴더에서 `codex`를 켜고, 로그인은 Sign in with ChatGPT로 합니다. 터미널이 부담스러우면 ChatGPT 데스크톱 앱 안의 Codex를 씁니다. 32단계에서 다룹니다.
 
 </div>
@@ -406,6 +410,8 @@ IT팀의 허락이 떨어지자 윤 과장은 곧장 공식 문서를 열었습�
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> `/init`으로 CLAUDE.md 초안을 받아 폴더의 목적과 규칙, 하지 말 것을 적어 두고, 여러 파일에 걸친 큰일은 플랜 모드로 먼저 계획을 받아 읽은 뒤 실행으로 넘어갑니다.
+
 <span class="label">Codex에서는</span> CLAUDE.md가 하는 일을 AGENTS.md가 합니다. `/init`으로 초안을 받는 것도 같습니다. Codex는 CLAUDE.md를 저절로 읽지 않으니, 두 도구를 함께 쓸 때는 규칙 파일을 어떻게 맞출지 따로 정해야 합니다. 계획 모드는 `/plan`이나 Shift+Tab으로 켭니다. 33단계에서 다룹니다.
 
 </div>
@@ -452,6 +458,8 @@ IT팀의 허락이 떨어지자 윤 과장은 곧장 공식 문서를 열었습�
 **나만의 명령 만들기.** 기본 명령 말고도 자주 하는 지시를 파일로 적어 두면 `/이름`으로 부를 수 있습니다. 방식은 두 가지입니다. 하나는 작업 폴더 안 `.claude/commands/` 폴더에 `푸시전점검.md` 같은 파일을 두고 그 안에 늘 하던 지시를 적는 방식입니다. 그러면 `/푸시전점검`으로 불립니다. 다른 하나는 스킬입니다. `.claude/skills/이름/SKILL.md`를 만들어 두면 Claude가 필요할 때 알아서 꺼내 쓰고, `/이름`으로 직접 부를 수도 있습니다. 폴더 위치와 형식은 버전에 따라 달라질 수 있으니 만들기 전에 공식 문서를 확인하십시오. 영문 이름이 더 안전한 환경도 있습니다. 파일 이름에 한글이 문제를 일으키면 `pre-push`처럼 바꿉니다. 29단계에서 윤 과장이 "푸시 전 점검"을 명령 하나로 묶는 것이 이 방식이고, SKILL.md를 쓰는 법은 제6부(48단계, 53단계)에서 자세히 다룹니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude Code에서는</span> 입력창에 `/`를 치면 명령 목록이 뜹니다. 과제가 바뀌면 `/clear`, 대화가 길어지면 `/compact`, 잘못 갔으면 `/rewind`로 대화와 파일을 앞 시점으로 돌리고, 자주 하는 지시는 `.claude/commands/`나 스킬로 만들어 `/이름`으로 부릅니다.
 
 <span class="label">Codex에서는</span> `/model`, `/compact`, `/resume`, `/status`, `/review`처럼 이름이 같은 명령이 많습니다. 새 대화는 `/new`나 `/clear`로 시작하고, 바뀐 내용은 `/diff`로 봅니다. `/rewind` 같은 되돌리기 명령은 CLI에 없으니, 작업 전후로 커밋해 두는 습관이 되돌리기를 맡습니다. 명령 목록과 설정 파일은 37단계에서 정리합니다.
 
@@ -574,6 +582,8 @@ IT팀의 허락이 떨어지자 윤 과장은 곧장 공식 문서를 열었습�
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 업무 파일 폴더를 원본·작업·결과로 나누고, "원본 폴더의 파일은 읽기만 한다"는 규칙을 CLAUDE.md에 적어 둡니다. 합친 표는 건수, 합계, 빈 값 세 가지로 검산합니다.
+
 <span class="label">Codex에서는</span> 원본·작업·결과 폴더와 검산 세 가지를 Codex로 그대로 해 보는 것이 34단계입니다. 원본 보호 규칙은 AGENTS.md에 적습니다. 코드와 상관없는 문서·표 정리라면 ChatGPT의 Work가 더 맞을 수도 있는데, 어느 쪽에 맡길지는 31단계에서 가립니다.
 
 </div>
@@ -693,6 +703,8 @@ GitHub에서 프로젝트 하나를 담는 공간을 저장소라고 부릅니�
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 저장소 주소를 주고 올려 달라고 하면 git 초기화, 커밋, 저장소 연결, 푸시를 단계마다 허락을 구하며 진행합니다. 인증은 브라우저 로그인이나 개인용 토큰으로 하고, 토큰은 대화창에 붙여 넣지 않고 입력을 요구하는 곳에 직접 넣습니다.
+
 <span class="label">Codex에서는</span> 저장소를 만들고 올리는 순서는 같습니다. 여기서 만든 GitHub 저장소는 Codex의 클라우드 작업(chatgpt.com/codex)을 쓸 때도 그대로 연결합니다. 클라우드에서 돌린 작업의 결과를 PR로 받는 흐름은 35단계에서 다룹니다.
 
 </div>
@@ -795,6 +807,8 @@ Claude Code에게 "깃허브에 올려 줘"라고 하자 Claude가 저장소 주
 | Claude가 기록을 지우거나 강제로 덮어쓰려 합니다 | 거절하고 이유를 묻습니다 |
 
 <div class="side" markdown="1">
+
+<span class="label">Claude Code에서는</span> "커밋해 줘", "푸시해 줘", "그 커밋만 되돌려 줘"처럼 우리말로 시키면 뒤에서 git 명령이 돕니다. 되돌리기는 기록을 지우지 않고 거꾸로 하는 새 기록을 쌓고, 강제로 덮어쓰겠다는 허락 요청은 거절합니다.
 
 <span class="label">Codex에서는</span> 공식 안내도 작업 전후로 커밋해 두고 되돌리라고 권합니다. 이 단계에서 익힌 커밋 습관이 Codex에서는 되돌리기의 중심이 됩니다. 데스크톱 앱의 리뷰 화면에서는 파일이나 덩어리 단위로 되돌릴 수도 있습니다. 브랜치와 비슷하게 작업마다 따로 떼어 돌리는 Worktree는 35단계에서 다룹니다.
 
@@ -944,6 +958,8 @@ Cloudflare Pages도 흐름은 같습니다. 이 책의 저자가 운영하는 ce
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> GitHub 저장소를 Vercel이나 Cloudflare Pages에 연결해 두면 푸시할 때마다 다시 배포되고, `vercel`이나 `wrangler` 명령으로 배포를 맡길 수도 있습니다. 본 배포 명령은 반드시 묻고 실행하게 해 둡니다.
+
 <span class="label">Codex에서는</span> 배포 흐름은 도구와 상관없이 같으니, Codex로 고친 도구도 이 단계대로 푸시해 같은 주소에서 확인합니다.
 
 </div>
@@ -1051,6 +1067,8 @@ Cloudflare Pages도 흐름은 같습니다. 이 책의 저자가 운영하는 ce
 
 <div class="side" markdown="1">
 
+<span class="label">Claude Code에서는</span> 매번 묻는 기본 모드, 파일 편집은 묻지 않는 모드, 읽기만 하는 플랜 모드 가운데 권한 모드를 고르고, 설정 파일에 늘 허락할 명령과 늘 거절할 명령을 적어 둡니다. `/permissions`를 치면 지금 적힌 목록을 보고 고칩니다.
+
 <span class="label">Codex에서는</span> 권한이 두 층으로 나뉩니다. 샌드박스는 무엇을 할 수 있는지를, 승인 방식은 언제 멈추고 물을지를 정합니다. 흔히 쓰는 Auto 조합은 작업 폴더 안에서는 알아서 읽고 고치되, 폴더 밖을 고치거나 네트워크를 쓸 때는 묻습니다. `/permissions`로 바꾸며, 승인과 샌드박스를 모두 끄는 옵션은 권하지 않습니다. 33단계에서 다룹니다.
 
 </div>
@@ -1153,6 +1171,8 @@ Claude Code에도 그런 장치들이 있습니다. 이 단계에서는 다섯 �
 윤 과장이 이 가운데 무엇을 골랐는지 봅시다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude Code에서는</span> 훅, 서브에이전트, MCP, 슬래시 명령, 스킬 다섯 가지 장치를 씁니다. 지금 무엇이 켜져 있는지는 `/hooks`, `/agents`, `/mcp`로 확인하고, 무엇을 붙이든 먼저 계획을 받고 공식 문서로 형식을 확인합니다.
 
 <span class="label">Codex에서는</span> 훅, 서브에이전트, MCP, 스킬이 모두 있습니다. 설정은 `config.toml`에 모이고, MCP 서버는 `codex mcp add`로 붙이며, 스킬은 `$스킬이름`으로 부릅니다. Claude Code에서 쓰던 설정은 `/import`로 가져올 수 있습니다. 37단계에서 다룹니다.
 
@@ -1263,6 +1283,8 @@ Claude Code는 일을 마치면 친절하게 보고합니다. "예약 기능을 
 </div>
 
 <div class="side" markdown="1">
+
+<span class="label">Claude Code에서는</span> "고치지는 말고 바뀐 파일 목록, 시키지 않은 변경, 되돌려 봤을 때 테스트가 떨어지는지를 보고해 줘"라고 검증을 부탁하고, 29단계의 서브에이전트에게 검토만 따로 맡길 수도 있습니다. 배포된 주소는 내 손으로 직접 엽니다.
 
 <span class="label">Codex에서는</span> 만든 쪽과 다른 에이전트에게 검토를 맡기면 같은 가정에 갇힐 위험이 줄어듭니다. Codex CLI의 `/review`는 작업 폴더의 변경을 검토하고, GitHub의 PR에 `@codex review`라고 댓글을 달면 Codex가 리뷰를 올립니다. PR 리뷰는 36단계, Claude Code로 만든 것을 Codex가 검토하는 교차 검토는 38단계에서 다룹니다.
 

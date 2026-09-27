@@ -2,7 +2,7 @@
 
 # 함께 읽을 칼럼
 
-『클로드·GPT 완전정복 100단계』 v2026.09.27.7 기준
+『클로드·GPT 완전정복 100단계』 v2026.09.27.8 기준
 
 아래 칼럼은 저자가 CEO경제신문에 쓴 글이며, 모두 [https://ceoai.kr/leadership2/reads/](https://ceoai.kr/leadership2/reads/)에 모아 두었습니다.
 

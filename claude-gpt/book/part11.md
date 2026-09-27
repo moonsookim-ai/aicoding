@@ -777,6 +777,8 @@ API가 맞는 일에는 공통점이 있습니다. 입력이 우리 시스템 �
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 회사 시스템이 직접 Claude를 부르는 창구가 Claude API이고, 개발팀에는 붙일 지점, 입력과 출력, 사람이 확인하는 지점, 금지 데이터와 93단계의 기준표를 적어 넘깁니다. API 키는 75단계의 순서대로 이 기능 전용으로 만들고 사용 한도를 걸어 둡니다.
+
 <span class="label">ChatGPT·Codex에서는</span> OpenAI 쪽 창구는 OpenAI API입니다. 개발자 대시보드의 API Keys에서 비밀 키를 만들어 환경 변수 `OPENAI_API_KEY`로 등록하고, Responses API(`client.responses.create`)로 부릅니다. 채팅 요금제와 따로 쓴 만큼 청구되는 점은 Claude API와 같습니다. 코드 저장소 작업을 CI에서 돌리려면 `codex exec`나 Codex GitHub Action(`openai/codex-action@v1`)을 씁니다. 이때 키는 실행할 때만 넘기고, 저장소 코드를 실행하는 잡 전체의 환경 변수로 두지 않습니다. 개발팀에 넘기는 요청서와 기준표는 어느 회사 API를 쓰든 똑같습니다.
 
 </div>
@@ -876,6 +878,8 @@ Claude는 요청서 끝에 개발팀이 되물을 만한 질문을 적어 줍니
 가장 자주 빠지는 것은 세 번째 갈래입니다. 외부 자동화 도구는 부서가 따로 결제하는 경우가 많아 전체 비용 표에 잡히지 않습니다. 80단계의 부서 자동화 지도를 꺼내 도구마다 누가 결제하는지 한 번 확인합시다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 비용이 사람이 쓰는 계정(요금제의 관리자 화면), 시스템이 쓰는 API(개발자용 관리 화면), 외부 자동화 도구(각 도구의 청구 화면) 세 갈래로 나가고, 확인하는 곳도 셋으로 다릅니다. 도입할 때 담당자가 직접 찾아 적어 둡니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT를 함께 쓰면 갈래마다 청구서가 하나씩 더 생깁니다. 사람 계정은 ChatGPT 요금제(Free, Go, Plus, Pro, Business, Enterprise, Edu)로 나가고, Codex와 Work는 그 요금제의 사용량 한도와 크레딧을 함께 씁니다. 한도는 5시간 단위로 걸리고 주간 한도가 따로 붙을 수 있으며, 사용량 대시보드나 Codex CLI의 `/status`에서 확인합니다. OpenAI API는 누적 결제액에 따라 사용량 등급이 올라가고, 등급별 한도는 조직 설정의 한도 페이지에서 봅니다. 지출 알림이나 월 상한을 거는 방법은 화면에서 직접 확인하십시오. 분기 보고 양식의 "사용 방식" 열에 어느 회사 도구인지도 함께 적어 두면 청구서와 맞추기 쉽습니다.
 
@@ -1021,6 +1025,8 @@ Claude 사용 현황 분기 보고 양식을 표로 만들어 줘. 엑셀 파일
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 등급표의 가로에 채팅·업로드, 프로젝트, 연결자, Cowork·Claude Code, 아티팩트 게시, 자동화·API를 놓고, 회사 정보보안 규정의 등급과 만나는 곳마다 허용·조건부·금지를 적습니다. 표는 보안 담당자와 함께 채웁니다.
+
 <span class="label">ChatGPT에서는</span> ChatGPT도 쓴다면 등급표의 가로에 ChatGPT 기능 이름을 함께 적습니다. Chat과 파일 업로드, 프로젝트, 플러그인(앱·MCP), Work, Codex, 예약 작업, Sites, API입니다. Sites로 만든 주소는 모두 실제 운영 배포이므로 아티팩트 게시처럼 엄격하게 정합니다. Business 이상 워크스페이스는 업무 데이터를 기본적으로 학습에 쓰지 않지만, Plus·Pro 같은 개인 계정은 사용자가 직접 꺼야 합니다. 설정의 데이터 제어 항목에 있는 모델 개선 옵션이며, 정확한 이름과 위치는 화면에서 확인하십시오.
 
 </div>
@@ -1034,6 +1040,8 @@ Claude 사용 현황 분기 보고 양식을 표로 만들어 줘. 엑셀 파일
 그리고 모든 등급 위에 원칙 하나를 둡니다. 메일 발송, 결제, 삭제처럼 밖으로 나가거나 되돌릴 수 없는 일은 사람이 마지막에 확인합니다. 공개 자료라도, 표 전체가 허용으로 채워져 있어도 이 원칙은 변하지 않습니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 새 연결자를 붙이고 싶은 직원이 물을 승인 창구와 사고 보고 창구를 한 곳씩 정하고, 알린 사람을 탓하지 않는다는 원칙을 규칙에 적습니다. 메일 발송, 결제, 삭제처럼 되돌릴 수 없는 일은 어떤 등급이든 사람이 마지막에 확인합니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT Business에서는 관리자가 SAML SSO, MFA, 사용자 관리를 맡고, Enterprise·Edu에는 역할별 권한(RBAC), SCIM, 데이터 보존·저장 위치 통제, Compliance API 감사 로그가 더해집니다. 어떤 플러그인과 MCP 서버를 쓸 수 있는지, 어떤 동작까지 허락할지도 관리자가 워크스페이스 설정에서 정합니다. 그러니 승인 창구가 이 설정의 주인을 겸하게 하면 규칙과 화면이 어긋나지 않습니다. 직원 컴퓨터에서 도는 Codex는 `requirements.toml`로 승인 정책과 샌드박스를 강제해, 전부 허용하는 모드를 막을 수 있습니다. 요금제마다 되는 설정이 다르니 관리자 화면에서 확인하십시오.
 
@@ -1137,6 +1145,8 @@ Claude 사용 현황 분기 보고 양식을 표로 만들어 줘. 엑셀 파일
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 공용 프롬프트는 팀 프로젝트의 지침이나 공용 문서에, 공용 스킬은 조직 공유로, 공용 연결자 목록은 98단계 등급표와 맞춘 공용 문서에 둡니다. Claude Code의 공용 규칙은 CLAUDE.md에 적습니다.
+
 <span class="label">ChatGPT·Codex에서는</span> Claude Code의 CLAUDE.md에 해당하는 Codex 규칙 파일은 AGENTS.md입니다(33단계). Codex는 CLAUDE.md를 저절로 읽지 않으므로, 두 도구를 함께 쓰는 저장소라면 AGENTS.md를 따로 두거나 설정의 대체 파일명 목록에 CLAUDE.md를 넣습니다. 어느 쪽이든 공용 규칙의 원본은 한 곳으로 정하고 주인을 둡니다. 스킬은 ChatGPT와 Codex가 함께 쓰고(ChatGPT는 `@`, Codex는 `$`), 스킬과 MCP 서버를 묶어 나눠 줄 때는 플러그인으로 묶습니다. 팀이 쓰던 맞춤 GPT는 플러그인으로 옮겨 가는 중이니, 공용 목록에도 플러그인 기준으로 적습니다.
 
 </div>
@@ -1170,6 +1180,8 @@ Claude 사용 현황 분기 보고 양식을 표로 만들어 줘. 엑셀 파일
 요약 글과 영상은 빠르지만 다른 나라에만 먼저 나온 기능, 일부 요금제에만 있는 기능, 발표만 되고 아직 쓸 수 없는 기능이 구분 없이 섞입니다. Claude에게 웹 검색으로 정리를 맡길 때도 출처를 공식 문서로 한정하고, 담당자가 링크를 직접 눌러 확인합니다(4단계).
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 한 달에 한 번 담당 한 사람이 Anthropic의 공지와 도움말 문서 같은 공식 출처만 보고, 변화를 영향 있음, 시험해 볼 것, 상관없음 세 갈래로 나눠 적습니다. Claude에게 웹 검색으로 정리를 맡길 때도 출처를 공식 문서로 한정합니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT와 Codex도 쓴다면 월간 확인의 출처에 OpenAI 공식 문서의 새 소식(What's new)과 변경 기록(changelog)을 더합니다. 모델 이름과 제공 범위가 몇 주 사이에도 바뀌고, 이전 모델의 종료 일정도 여기에 나옵니다. 아래 두 번째 프롬프트를 쓸 때도 "Anthropic" 자리에 OpenAI를 넣어 한 번 더 돌리면 됩니다.
 
@@ -1314,6 +1326,8 @@ Claude 사용 현황 분기 보고 양식을 표로 만들어 줘. 엑셀 파일
 양식을 Claude에게 주고 초안을 받아도 됩니다. 다만 Claude는 우리 회사의 담당자를 모릅니다. 이름 칸은 사람이 채웁니다. 마지막 승인 칸도 사람이 채웁니다. 규칙에 서명한 사람이 곧 규칙의 주인입니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 운영 규칙 한 페이지의 열 개 항목을 등급표, 팀 표준 목록, 사용 보고 양식 같은 이미 만든 결과물에서 가져오고, 규칙에는 그 위치만 적습니다. 담당자 이름과 마지막 승인은 사람이 채웁니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT와 Codex를 함께 쓰는 회사라면 규칙 한 페이지가 두 도구를 모두 다루게 합니다. 항목마다 Claude 쪽과 ChatGPT 쪽 이름(연결자와 플러그인, Cowork와 Work, CLAUDE.md와 AGENTS.md)을 나란히 적고, 도구별로 규칙을 따로 만들지 않습니다.
 

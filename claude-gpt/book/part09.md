@@ -315,6 +315,8 @@ Claude는 글을 읽고 쓰는 일을 잘하지만 매번 똑같이 하지는 �
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 데스크톱 앱 Cowork의 예약 작업으로 시각 트리거를 걸고, 새 메일이나 새 파일 같은 사건 트리거는 Zapier·Make·n8n 같은 외부 자동화 도구에 맡깁니다. 예약 작업은 컴퓨터와 앱이 켜져 있어야 돌고, 결과는 저장까지만 하게 둡니다.
+
 <span class="label">ChatGPT에서는</span> 같은 일을 예약 작업(Scheduled tasks)으로 합니다. 만든 작업은 **Scheduled** 화면에서 모아 관리합니다. 웹과 모바일에서는 시각뿐 아니라 Gmail의 새 메일, Slack 채널의 새 메시지, GitHub의 PR 활동 같은 사건으로 시작하는 작업도 만들 수 있어서, 위 표에서 외부 자동화 도구에 맡긴 사건 트리거 일부를 ChatGPT 안에서 걸 수 있습니다. 데스크톱 앱에서 만든 작업은 내 컴퓨터의 프로젝트 폴더에서 돌 수 있지만, Cowork와 마찬가지로 컴퓨터와 앱이 켜져 있어야 합니다. Codex CLI와 IDE 확장에는 예약을 관리하는 화면이 없으니 웹이나 데스크톱 앱에서 만듭니다. 결과 알림은 데스크톱 앱에서는 Activity 화면(벨)에 모이고, 웹에서는 설정 > Notifications에서 푸시·이메일·SMS 가운데 고릅니다.
 
 </div>
@@ -441,6 +443,8 @@ curl https://api.anthropic.com/v1/messages \
 
 <div class="side" markdown="1">
 
+<span class="label">Claude에서는</span> 개발자용 관리 화면인 Claude Console(console.anthropic.com)에서 결제 수단을 등록하고 사용 한도부터 정한 뒤 API 키를 만듭니다. `sk-ant-`로 시작하는 키는 만든 직후 한 번만 보이니 바로 외부 도구에 넣고, 터미널에서는 환경변수 `ANTHROPIC_API_KEY`에 넣어 `curl`로 시험합니다.
+
 <span class="label">ChatGPT·Codex에서는</span> OpenAI도 ChatGPT 구독과 API를 따로 관리합니다. 키는 개발자 대시보드의 API Keys 화면(platform.openai.com/api-keys)에서 새 비밀 키로 만들고, 만든 즉시 안전한 곳에 보관한 뒤 환경변수 `OPENAI_API_KEY`에 넣습니다. 부르는 방법은 Responses API이며, SDK(`pip install openai` 또는 `npm install openai`)에서 `client.responses.create(...)`에 모델 이름과 `input`을 넘기면 답이 `output_text`로 돌아옵니다. 외부 자동화 도구에서 OpenAI 단계를 넣을 때도 이 키를 씁니다. 대시보드의 메뉴 이름과 한도 설정 위치는 이 책에서 확인하지 못했으니 화면에서 확인합니다. 키를 다루는 원칙은 위와 같습니다. 흐름마다 따로 만들고, 어디에도 적어 두지 않습니다.
 
 </div>
@@ -463,6 +467,8 @@ Claude 단계에 들어가는 지시문도 앱에서 쓰던 프롬프트와 뼈�
 "확신" 항목은 나중에 요긴하게 쓰입니다. 확신이 낮은 건만 사람이 보면 되기 때문입니다. 덕분에 77단계의 승인 단계에서 모든 건을 일일이 볼 필요가 없어집니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 흐름 속 한 단계를 Zapier·Make·n8n에 Claude API로 넣고, 그 단계의 지시문에는 "모르면 물어봐 줘" 대신 "판단할 수 없으면 '확인필요'로 적는다"를 넣고 출력 항목의 이름과 순서를 못 박습니다.
 
 <span class="label">Codex에서는</span> 개발팀이라면 Zapier 같은 도구 대신 `codex exec`로 흐름 속 한 단계를 만들 수 있습니다. 대화 없이 한 번 실행하고 끝나며, 최종 답만 표준 출력으로 내보내므로 다음 단계가 받아 쓰기 좋습니다(`-o`로 파일에 저장, `--output-schema`로 출력 모양 고정). 기본값은 읽기 전용 샌드박스라서, 파일을 고치게 하려면 `--sandbox workspace-write`를 따로 붙여야 합니다. 저장소에 PR이 올라올 때처럼 CI에서 돌리려면 GitHub Action `openai/codex-action@v1`에 `openai-api-key`와 `prompt`를 넣고, 결과는 `final-message` 출력으로 받습니다. 인증에는 API 키를 권장하는데, 저장소 코드를 실행하는 잡 전체에 `OPENAI_API_KEY`를 환경변수로 걸어 두지 말라는 공식 경고가 있으니 그 실행에만 넘깁니다. API 키로 쓰면 API 요금으로 청구되고 Codex cloud 같은 클라우드 기능은 쓸 수 없습니다.
 
@@ -889,6 +895,8 @@ Claude 단계에 들어가는 지시문도 앱에서 쓰던 프롬프트와 뼈�
 앱 구독에는 일정 시간 동안 쓸 수 있는 사용량 한도가 있고, API에도 한도가 있습니다. 자동화가 한도를 다 써 버리면 그날 내가 손으로 하려던 일까지 막힐 수 있습니다. 자동화용 키를 따로 두면 누가 얼마를 썼는지 나눠 보기 쉽습니다. 콘솔에서 사용 한도나 알림을 설정할 수 있다면 설정해 둡니다. 구체적인 한도와 설정 방법은 요금제마다 다르고 자주 바뀌니, 이것도 공식 안내에서 확인합니다.
 
 <div class="side" markdown="1">
+
+<span class="label">Claude에서는</span> 한 달 실행 횟수 × 1회 비용으로 계산하되, 1회 사용량은 샘플로 몇 번 돌린 뒤 콘솔의 사용량 화면에서 가져오고 요금은 Anthropic 공식 요금표를 본 날짜와 함께 적습니다. 앱 구독과 API의 한도는 따로 있으니 자동화용 키를 따로 두고 콘솔에서 한도와 알림을 설정합니다.
 
 <span class="label">ChatGPT·Codex에서는</span> ChatGPT Work와 Codex는 요금, 크레딧, 사용량 한도를 함께 씁니다. Codex의 한도는 5시간 단위로 걸리고 주간 한도가 따로 붙을 수 있으며, 내 컴퓨터에서 한 작업과 클라우드 작업이 같은 한도를 나눠 씁니다. 그래서 구독 계정으로 도는 자동화가 한도를 먼저 쓰면 낮에 손으로 하려던 일이 막힐 수 있습니다. 남은 양은 사용량 대시보드나 CLI의 `/status`, `/usage`에서 보고, Plus·Pro는 크레딧을 더 살 수 있습니다. OpenAI API 쪽은 누적 결제액에 따라 사용량 등급(tier)과 월 한도가 자동으로 올라가며, 조직 설정의 Limits 페이지에서 확인합니다. 지출 알림이나 월 상한을 어떻게 거는지는 이 책에서 확인하지 못했으니 화면에서 확인합니다.
 
