@@ -37,9 +37,9 @@ PRETENDARD = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages
 PART_RE = re.compile(r"^# 제(\d+)부 · (.+)$")
 LESSON_RE = re.compile(r"^## (\d+)단계 · (.+)$")
 
-# 열 부를 네 편으로 묶는다. (편 제목, 첫 부, 끝 부)
-PYEON = [("제1편 · 기초 다지기", 1, 2), ("제2편 · Claude Code와 Claude in Chrome", 3, 4),
-         ("제3편 · 나만의 업무 시스템", 5, 7), ("제4편 · 자동화와 조직 확산", 8, 10)]
+# 열 부를 다섯 편으로 묶는다. (편 제목, 첫 부, 끝 부)
+PYEON = [("제1편 · 기초 다지기", 1, 2), ("제2편 · Claude Code", 3, 3), ("제3편 · Claude in Chrome", 4, 4),
+         ("제4편 · 나만의 업무 시스템", 5, 7), ("제5편 · 자동화와 조직 확산", 8, 10)]
 
 
 def pyeon_of(pno):
