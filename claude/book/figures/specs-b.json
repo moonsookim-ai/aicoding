@@ -1,9 +1,9 @@
 [
  {
   "id": "f04-tool-order",
-  "step": 39,
+  "step": 45,
   "before": "### 만든 사람과 써 보는 사람",
-  "caption": "연결자, 내려받기, 브라우저 조작 순서로 고른다",
+  "caption": "연결자, 내려받기, 브라우저 조작 순서로 고릅니다",
   "type": "flow",
   "nodes": [
    {
@@ -29,9 +29,9 @@
  },
  {
   "id": "f05-skill-parts",
-  "step": 43,
+  "step": 48,
   "before": "### 한 마디가 비면 무슨 일이 생기나",
-  "caption": "SKILL.md는 네 마디가 모두 채워져야 한다",
+  "caption": "SKILL.md는 네 마디가 모두 채워져야 합니다",
   "type": "stack",
   "layers": [
    {
@@ -54,9 +54,9 @@
  },
  {
   "id": "f05-description-call",
-  "step": 45,
+  "step": 50,
   "before": "### 고치기 전과 후",
-  "caption": "설명은 꺼낼지 정하고, 어떻게 할지는 본문이 맡는다",
+  "caption": "설명은 꺼낼지를 정하고, 어떻게 할지는 본문이 맡습니다",
   "type": "flow",
   "nodes": [
    {
@@ -82,9 +82,9 @@
  },
  {
   "id": "f06-talk-vs-delegate",
-  "step": 51,
+  "step": 56,
   "before": "### 대화로 할까, 맡길까",
-  "caption": "운전대를 누가 잡느냐가 두 방식을 가른다",
+  "caption": "운전대를 누가 잡느냐가 두 방식을 가릅니다",
   "type": "compare",
   "left": {
    "title": "대화",
@@ -108,9 +108,9 @@
  },
  {
   "id": "f07-mcp-steps",
-  "step": 62,
+  "step": 64,
   "before": "### 사내 시스템을 연결하는 길",
-  "caption": "부탁 한 번에 Claude는 도구를 골라 불러 쓴다",
+  "caption": "부탁 한 번에 Claude는 도구를 골라 불러 씁니다",
   "type": "flow",
   "nodes": [
    {
@@ -140,9 +140,9 @@
  },
  {
   "id": "f07-permission-layers",
-  "step": 68,
+  "step": 70,
   "before": "### 층을 왜 나눠야 하나",
-  "caption": "되돌리기 어려운 층일수록 사람이 마지막에 누른다",
+  "caption": "되돌리기 어려운 층일수록 사람이 마지막에 누릅니다",
   "type": "stack",
   "layers": [
    {

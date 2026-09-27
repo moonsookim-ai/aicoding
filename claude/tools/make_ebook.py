@@ -1,6 +1,6 @@
 """『클로드 완전정복 100단계』 전자책을 원고(docs/ebook/*.md)에서 EPUB·PDF·HTML로 만든다.
 
-원고는 docs/ebook/ 한 곳에만 있다. 머리말(front.md) → 제1~10부(part01~10.md) → 부록
+원고는 docs/ebook/ 한 곳에만 있다. 머리말(front.md) → 제1~11부(part01~11.md) → 부록
 (appendix.md) 순서로 엮고, 차례와 「프롬프트 모음」은 원고에서 뽑아 만든다 — 손으로 적어
 두지 않으므로 단계를 고치면 차례와 모음이 따라 바뀐다.
 
@@ -28,11 +28,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "book")
 OUT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "dist", "ebook"))
 
-TITLE = "클로드 완전정복 100단계"
-SUBTITLE = "채팅에서 Claude Code까지, 일을 맡기는 법을 따라 하며 익히는 실전 매뉴얼"
+TITLE = "클로드·GPT 완전정복 100단계"
+SUBTITLE = "채팅에서 Claude Code·Codex까지, 일을 맡기는 법을 따라 하며 익히는 실전 매뉴얼"
 AUTHOR = "CEO비즈니스스쿨 김문수 교수"
 SITES = ["ceobizschool.kr", "ceoai.kr"]
-BASENAME = "claude-100-steps"
+BASENAME = "claude-gpt-100-steps"
+SLUG = "claude-gpt"  # 웹 주소 /aicoding/<SLUG>/
 
 
 def _version():
@@ -52,9 +53,10 @@ PRETENDARD = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages
 PART_RE = re.compile(r"^# 제(\d+)부 · (.+)$")
 LESSON_RE = re.compile(r"^## (\d+)단계 · (.+)$")
 
-# 열 부를 다섯 편으로 묶는다. (편 제목, 첫 부, 끝 부)
-PYEON = [("제1편 · 기초 다지기", 1, 2), ("제2편 · Claude Code", 3, 3), ("제3편 · Claude in Chrome", 4, 4),
-         ("제4편 · 나만의 업무 시스템", 5, 7), ("제5편 · 자동화와 조직 확산", 8, 10)]
+# 열한 부를 다섯 편으로 묶는다. (편 제목, 첫 부, 끝 부)
+PYEON = [("제1편 · 기초 다지기", 1, 2), ("제2편 · Claude Code와 Codex", 3, 4), ("제3편 · 브라우저와 컴퓨터", 5, 5),
+         ("제4편 · 나만의 업무 시스템", 6, 8), ("제5편 · 자동화와 조직 확산", 9, 11)]
+PARTS = 11
 
 
 def pyeon_of(pno):
@@ -145,7 +147,7 @@ def enrich(text, extras, mode):
             files = cur.get("files") or []
             if files:
                 out += ["### 실습 파일", "",
-                        "공개 저장소에 올려 둔 가공 자료와 양식이다. 회사 자료 대신 먼저 이것으로 해 본다.", ""]
+                        "공개 저장소에 올려 둔 가공 자료와 양식입니다. 회사 자료 대신 먼저 이것으로 해 보세요.", ""]
                 out += ["- %s [%s](%s) · %s" % (f["kind"], f["name"], f["url"], f["desc"]) for f in files]
                 out.append("")
             in_check = True
@@ -158,14 +160,14 @@ def enrich(text, extras, mode):
                 out += ["%d. %s" % (k + 1, a) for k, a in enumerate(answers)]
                 out += ["", "</details>"]
             elif answers:
-                out += ["", "해설은 부록 [「스스로 점검 해설」](#c%d)에 있다." % cur_no]
+                out += ["", "해설은 부록 [「스스로 점검 해설」](#c%d)에 있습니다." % cur_no]
     return "\n".join(out) + "\n"
 
 
 def checks_md(ol, extras):
     out = ["## 스스로 점검 해설", "",
-           "단계마다 끝에 둔 「스스로 점검」 세 문항을 어떻게 판단하면 되는지 적었다. 통과로 볼 수 있는 모습과, "
-           "아직이라면 다시 볼 곳을 함께 적었다.", ""]
+           "단계마다 끝에 둔 「스스로 점검」 세 문항을 어떻게 판단하면 되는지 적었습니다. 통과로 볼 수 있는 모습과, "
+           "아직이라면 다시 볼 곳을 함께 적었습니다.", ""]
     for pno, ptitle, lessons in ol:
         out += ["### 제%d부 · %s" % (pno, ptitle), ""]
         for lno, ltitle in lessons:
@@ -179,7 +181,7 @@ def checks_md(ol, extras):
 
 
 # ── 부별 한 장 요약: 단계마다 핵심 한 문장과 난이도, 이 부의 과제를 한 쪽에 모은다 ────────────
-SITE_BOOK = "https://ceoai.kr/aicoding/claude"
+SITE_BOOK = "https://ceoai.kr/aicoding/" + SLUG
 
 
 def part_facts(text):
@@ -256,14 +258,16 @@ KEEP = re.compile(r"(\[[^\]]*\]\([^)]*\)|`[^`]*`)")
 
 
 def _refs(group):
-    """'40·68·77' → [40, 68, 77], '16~21' → [(16, 21)]"""
-    if "~" in group:
-        a, b = group.split("~")[0], group.split("~")[-1]
-        return [(int(a), int(b))]
+    """'40·68·77' → [40, 68, 77], '16~21' → [(16, 21)], '24~31·56' → [(24, 31), 56]"""
     out = []
-    for n in group.split("·"):
-        if int(n) not in out:
-            out.append(int(n))
+    for piece in group.split("·"):
+        if "~" in piece:
+            a, b = piece.split("~")[0], piece.split("~")[-1]
+            r = (int(a), int(b))
+        else:
+            r = int(piece)
+        if r not in out:
+            out.append(r)
     return out
 
 
@@ -297,15 +301,16 @@ def link_steps(text, titles, prose=False):
         def one(m):
             if seg[:m.start()].endswith("완전정복 "):
                 return m.group(0)
-            refs = _refs(m.group(1))
-            if isinstance(refs[0], tuple):
-                a, b = refs[0]
-                return "[%s](#l%d)" % (m.group(0), a) if ok(a) and ok(b) else m.group(0)
-            nums = m.group(1).split("·")
-            if not all(ok(int(n)) for n in nums):
-                return m.group(0)
-            parts = ["[%s](#l%s)" % (n, n) for n in nums[:-1]] + ["[%s단계](#l%s)" % (nums[-1], nums[-1])]
-            return "·".join(parts)
+            pieces = m.group(1).split("·")
+            outp = []
+            for k, piece in enumerate(pieces):
+                first = int(piece.split("~")[0])
+                last = int(piece.split("~")[-1])
+                if not (ok(first) and ok(last)):
+                    return m.group(0)
+                label = piece + ("단계" if k == len(pieces) - 1 else "")
+                outp.append("[%s](#l%d)" % (label, first))
+            return "·".join(outp)
         return STEP_REF.sub(one, seg)
 
     def prose_line(line):
@@ -373,7 +378,7 @@ def collect_prompts(parts):
 
 def prompts_md(prompts):
     out = ["## 프롬프트 모음", "",
-           "본문의 「복사해 쓰는 프롬프트」를 단계 순서대로 모았다. 대괄호 `[ ]` 안만 바꿔 넣는다.", ""]
+           "본문의 「복사해 쓰는 프롬프트」를 단계 순서대로 모았습니다. 대괄호 `[ ]` 안만 바꿔 넣으면 됩니다.", ""]
     last = None
     for (no, title), body in prompts:
         if no != last:
@@ -423,6 +428,9 @@ blockquote p{margin:0}
 .column p{margin:.45em 0}
 .column .label{font-weight:700;color:var(--accent)}
 .column .src{font-size:.85em;color:#666;text-align:right}
+.side{margin:1.2em 0;padding:.8em 1.1em;border-left:4px solid #10a37f;background:#eef8f4;border-radius:0 6px 6px 0;font-size:.95em}
+.side p{margin:.4em 0}
+.side .label{font-weight:700;color:#0b7a5f}
 table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92em}
 th,td{border:1px solid var(--line);padding:.4em .6em;text-align:left;vertical-align:top}
 th{background:#eef1f6}
@@ -438,7 +446,8 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .cover .s{margin-top:1em;color:var(--sub);font-size:1.1em}
 .cover .a{margin-top:4em;font-weight:700;color:var(--accent)}
 .cover .v{margin-top:1.2em;color:var(--sub);font-size:.95em;letter-spacing:.02em}
-.cover .w{margin-top:.6em;color:var(--navy);font-size:1em;font-weight:600;letter-spacing:.03em}
+.cover .ws{margin-top:.6em}
+.cover .w{margin-top:.2em;color:var(--navy);font-size:1em;font-weight:600;letter-spacing:.03em}
 .toc ul{list-style:none;padding-left:1em;margin:.2em 0 1em}
 .toc a{text-decoration:none}
 .toc .pg{float:right;color:var(--sub);font-variant-numeric:tabular-nums;padding-left:.6em}
@@ -528,7 +537,8 @@ th{background:#eef1f6;font-size:8pt}
 td:first-child{width:34%;font-weight:600}td:last-child{width:9%;white-space:nowrap;color:#b8871c}
 a{color:#15223d;text-decoration:none}
 ul{margin:3px 0;padding-left:1.2em}li{margin:1px 0}
-.foot{margin-top:8px;border-top:1px solid #d9dde6;padding-top:4px;color:#5b6478;font-size:7.6pt;display:flex;justify-content:space-between}
+.foot{margin-top:8px;border-top:1px solid #d9dde6;padding-top:4px;color:#5b6478;font-size:7.6pt;display:flex;justify-content:space-between;align-items:flex-start}
+.foot .ws{text-align:right}
 """
 
 
@@ -536,13 +546,14 @@ def one_pagers(node, env, faces, ol, facts, extras, doing):
     """부마다 한 장짜리 요약 PDF(dist/ebook/summary/part-NN.pdf). 링크는 웹 쪽 주소로 건다."""
     import json
     sdir = os.path.join(OUT, "summary")
+    shutil.rmtree(sdir, ignore_errors=True)  # 지난 판 요약이 남아 새 판에 섞이지 않게 비우고 시작한다
     os.makedirs(sdir, exist_ok=True)
     jobs = []
     for (pno, ptitle, lessons), fx in zip(ol, facts):
         body = md(summary_md(pno, ptitle, lessons, fx, extras, doing, web_links=True))
         page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>%s%s</style></head><body>'
                 '<div class="top"><b>%s · 한 장 요약</b><span>%s · v%s</span></div>%s'
-                '<div class="foot"><span>%s/part-%02d/</span><span>ceobizschool.kr · ceoai.kr</span></div></body></html>'
+                '<div class="foot"><span>%s/part-%02d/</span><span class="ws">ceobizschool.kr<br>ceoai.kr</span></div></body></html>'
                 ) % ("".join(faces), SUMMARY_CSS, TITLE, AUTHOR, VERSION, body, SITE_BOOK, pno)
         src = os.path.join(sdir, ".part-%02d.html" % pno)
         with open(src, "w", encoding="utf-8") as f:
@@ -564,6 +575,7 @@ const {chromium} = require('playwright');
     r = subprocess.run([node, "-e", script, json.dumps(jobs)], env=env, capture_output=True, text=True)
     if r.returncode:
         print("부별 한 장 요약을 건너뛴다:", r.stderr.strip()[:300])
+        shutil.rmtree(sdir, ignore_errors=True)
         return
     try:
         import pymupdf
@@ -577,7 +589,7 @@ const {chromium} = require('playwright');
 
 def build():
     front = read("front.md")
-    parts = [read("part%02d.md" % i) for i in range(1, 11)]
+    parts = [read("part%02d.md" % i) for i in range(1, PARTS + 1)]
     appendix = read("appendix.md")
     ol = outline(parts)
     missing = [n for n in range(1, 101) if n not in {l for _, _, ls in ol for l, _ in ls}]
@@ -594,8 +606,8 @@ def build():
     doing = doing_of(appendix)
     facts = [part_facts(p) for p in raw_parts]
     summaries = ["## 부별 한 장 요약", "",
-                 "부마다 단계의 핵심 한 문장과 난이도, 이 부의 과제를 한 쪽에 모았다. 복습할 때, 팀에 나눠 줄 때 쓴다. "
-                 "웹에서는 부마다 한 장짜리 PDF로도 내려받을 수 있다.", ""]
+                 "부마다 단계의 핵심 한 문장과 난이도, 이 부의 과제를 한 쪽에 모았습니다. 복습할 때, 팀에 나눠 줄 때 씁니다. "
+                 "웹에서는 부마다 한 장짜리 PDF로도 내려받을 수 있습니다.", ""]
     for (pno, ptitle, lessons), fx in zip(ol, facts):
         summaries.append(summary_md(pno, ptitle, lessons, fx, extras, doing))
     appendix_full = (appendix.replace("# 부록", "# 부록 {#appendix}", 1) + "\n" + "\n".join(summaries)
@@ -606,7 +618,7 @@ def build():
 
     # ── 한 장짜리 HTML (PDF 원본 겸 웹 열람용)
     cover = ('<section class="cover"><div class="t">%s</div><div class="s">%s</div>'
-             '<div class="a">%s</div><div class="w">%s</div><div class="v">v%s · %s 기준</div></section>') % (TITLE, SUBTITLE, AUTHOR, " · ".join(SITES), VERSION, VERSION_DATE)
+             '<div class="a">%s</div><div class="ws">%s</div><div class="v">v%s · %s 기준</div></section>') % (TITLE, SUBTITLE, AUTHOR, "".join('<div class="w">%s</div>' % x for x in SITES), VERSION, VERSION_DATE)
     body = [cover,
             '<section>%s</section>' % md(front),
             '<section class="toc">%s</section>' % md(toc_md(ol))]
@@ -730,7 +742,7 @@ const {chromium} = require('playwright');
         if render(printed):
             made.append(pdf_path)
             finish_pdf(pdf_path, printed, render, ol)
-    if node and faces:
+    if node:  # 글꼴을 못 받았어도 시스템 글꼴로 찍는다(본 PDF와 같다)
         one_pagers(node, env, faces, ol, facts, extras, doing)
     print("단계 %d개 · 프롬프트 %d개" % (sum(len(ls) for _, _, ls in ol), len(prompts)))
     for p in made:

@@ -18,14 +18,14 @@ CEO비즈니스스쿨 김문수 교수가 경영진·실무 리더·연구자·�
 
 | 폴더 | 내용 | 상태 |
 |---|---|---|
-| [`claude/`](claude/) | 『클로드 완전정복 100단계』 — 채팅에서 Claude Code, Claude in Chrome, 스킬·연결자·자동화, 부서별 AX까지 | 공개 |
-| [`codex/`](codex/) | Codex 완전정복 — Codex로 일을 맡기는 법 | 준비 중 |
+| [`claude/`](claude/) | 『클로드·GPT 완전정복 100단계』 — Claude와 ChatGPT 채팅에서 Claude Code·Codex, 브라우저와 컴퓨터 맡기기, 스킬·연결자·자동화, 부서별 AX까지(5편 11부) | 공개 |
+| [`codex/`](codex/) | Codex 내용은 『클로드·GPT 완전정복 100단계』 제4부(31~39단계)로 합쳤습니다 | 합침 |
 | `agent/` | AI 에이전트 완전정복 — 에이전트의 구조와 설계, 평가·운영을 깊이 있게 | 준비 중 |
-| [`common/`](common/) | 도구와 상관없이 통하는 원칙 · 도구 비교 | 준비 중 |
+| [`common/`](common/) | 도구와 상관없이 통하는 원칙 · 도구 비교, ChatGPT·Codex 사실 확인 기록(`gpt_사실확인.md`) | 준비 중 |
 
 ## 바로 쓰기
 
-- **웹으로 읽기(단계별): <https://ceoai.kr/aicoding/claude/>** · PDF·EPUB 내려받기도 이곳에서
+- **웹으로 읽기(단계별): <https://ceoai.kr/aicoding/claude-gpt/>** · PDF도 이곳에서
 
 - 책 원고: [`claude/book/`](claude/book/) — 머리말부터 부록까지 마크다운으로 읽을 수 있습니다.
 - 복사해 쓰는 프롬프트 128개: [`claude/prompts.md`](claude/prompts.md)

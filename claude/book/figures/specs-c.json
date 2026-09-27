@@ -1,9 +1,9 @@
 [
  {
   "id": "f08-six-lines",
-  "step": 72,
+  "step": 73,
   "before": "### 여섯 줄을 전부 넘기지 않는다",
-  "caption": "여섯 줄을 적으면 기계에 넘길 줄과 사람이 맡을 줄이 보인다",
+  "caption": "여섯 줄을 적으면 기계에 넘길 줄과 사람이 맡을 줄이 보입니다",
   "type": "flow",
   "nodes": [
    {
@@ -76,7 +76,7 @@
   "id": "f08-approval",
   "step": 77,
   "before": "### 승인 단계의 모양",
-  "caption": "세 질문 가운데 하나라도 그렇다면 승인 단계를 둔다",
+  "caption": "세 질문 가운데 하나라도 그렇다면 승인 단계를 둡니다",
   "type": "hub",
   "center": {
    "t": "승인 단계",
@@ -101,7 +101,7 @@
   "id": "f09-ax-flow",
   "step": 81,
   "before": "### 현장 장면",
-  "caption": "결정 주기를 월간 회의에서 주간 한 페이지로 바꾼다",
+  "caption": "결정 주기를 월간 회의에서 주간 한 페이지로 바꿉니다",
   "type": "compare",
   "left": {
    "title": "As-is",
@@ -127,7 +127,7 @@
   "id": "f10-five-traps",
   "step": 91,
   "before": "### 직급과 부서에 따라",
-  "caption": "다섯 함정은 모두 사람이 할 일을 Claude에게 넘긴 곳이다",
+  "caption": "다섯 함정은 모두 사람이 할 일을 Claude에게 넘긴 곳입니다",
   "type": "hub",
   "center": {
    "t": "넘기면 추측이 된다",
