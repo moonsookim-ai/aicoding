@@ -83,6 +83,88 @@ def tag_headings(text):
     return "\n".join(lines) + "\n"
 
 
+STEP_REF = re.compile(r"(?<![\d·~])(\d{1,3}(?:[·~]\d{1,3})*)단계")
+CELL_REFS = re.compile(r"^\s*\d{1,3}(?:[·~]\d{1,3})*단계(?:\s*,\s*\d{1,3}(?:[·~]\d{1,3})*단계)*\s*$")
+KEEP = re.compile(r"(\[[^\]]*\]\([^)]*\)|`[^`]*`)")
+
+
+def _refs(group):
+    """'40·68·77' → [40, 68, 77], '16~21' → [(16, 21)]"""
+    if "~" in group:
+        a, b = group.split("~")[0], group.split("~")[-1]
+        return [(int(a), int(b))]
+    out = []
+    for n in group.split("·"):
+        if int(n) not in out:
+            out.append(int(n))
+    return out
+
+
+def link_steps(text, titles, prose=False):
+    """「17단계」 같은 단계 언급을 그 단계로 가는 링크로 바꾼다(PDF·EPUB·웹이 같은 규칙을 쓴다).
+
+    표 칸이 단계 언급만으로 되어 있으면 「17단계 · 워드·엑셀 파일로 받기」처럼 제목을 붙여
+    줄마다 하나씩 적는다. prose=True면 문장 속 언급도 링크만 건다 — 부록에서만 켠다.
+    본문의 문장에는 「2단계와 3단계로 돌아가」처럼 실습 안의 순서 번호가 섞여 있어서다.
+    링크는 #l17 꼴이다. 웹은 이것을 단계 쪽 주소로 바꾼다.
+    """
+    def ok(n):
+        return 1 <= n <= 100 and n in titles
+
+    def cell(c):
+        items = []
+        for g in STEP_REF.findall(c):
+            for r in _refs(g):
+                if isinstance(r, tuple):
+                    a, b = r
+                    if not (ok(a) and ok(b)):
+                        return None
+                    items.append("[%d~%d단계](#l%d)" % (a, b, a))
+                else:
+                    if not ok(r):
+                        return None
+                    items.append("[%d단계 · %s](#l%d)" % (r, titles[r].replace("[", "(").replace("]", ")"), r))
+        return " " + "<br />".join(items) + " "
+
+    def sentence(seg):
+        def one(m):
+            if seg[:m.start()].endswith("완전정복 "):
+                return m.group(0)
+            refs = _refs(m.group(1))
+            if isinstance(refs[0], tuple):
+                a, b = refs[0]
+                return "[%s](#l%d)" % (m.group(0), a) if ok(a) and ok(b) else m.group(0)
+            nums = m.group(1).split("·")
+            if not all(ok(int(n)) for n in nums):
+                return m.group(0)
+            parts = ["[%s](#l%s)" % (n, n) for n in nums[:-1]] + ["[%s단계](#l%s)" % (nums[-1], nums[-1])]
+            return "·".join(parts)
+        return STEP_REF.sub(one, seg)
+
+    def prose_line(line):
+        return "".join(x if KEEP.fullmatch(x) else sentence(x) for x in KEEP.split(line))
+
+    out, fence = [], False
+    for line in text.splitlines():
+        if line.lstrip().startswith("```"):
+            fence = not fence
+        elif not fence and not line.startswith("#"):
+            if line.startswith("|") and not re.match(r"^\|[\s:|-]+\|?\s*$", line):
+                cells = line.split("|")
+                for i in range(1, len(cells) - 1):
+                    if CELL_REFS.match(cells[i]):
+                        new = cell(cells[i])
+                        if new:
+                            cells[i] = new
+                    elif prose:
+                        cells[i] = prose_line(cells[i])
+                line = "|".join(cells)
+            elif prose:
+                line = prose_line(line)
+        out.append(line)
+    return "\n".join(out) + ("\n" if text.endswith("\n") else "")
+
+
 def outline(parts):
     """[(부 번호, 부 제목, [(단계 번호, 단계 제목)])]"""
     res = []
@@ -212,6 +294,10 @@ def build():
     if missing:
         sys.exit("원고에 빠진 단계가 있다: %s" % missing)
     prompts = collect_prompts(parts)
+    titles = {l: t for _, _, ls in ol for l, t in ls}
+    front = link_steps(front, titles)
+    parts = [link_steps(p, titles) for p in parts]
+    appendix = link_steps(appendix, titles, prose=True)
     appendix_full = appendix.replace("# 부록", "# 부록 {#appendix}", 1) + "\n" + prompts_md(prompts)
 
     os.makedirs(OUT, exist_ok=True)
