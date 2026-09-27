@@ -1,6 +1,5 @@
 # 함께 읽을 칼럼
 
-
 아래 칼럼은 저자가 CEO경제신문에 쓴 글이며, 모두 [https://ceoai.kr/leadership2/reads/](https://ceoai.kr/leadership2/reads/)에 모아 두었다.
 
 | 칼럼 | 날짜 | 한 문장 요지 | 이 책에서 이어지는 곳 |

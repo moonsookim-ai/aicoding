@@ -17,10 +17,12 @@ CEO비즈니스스쿨 김문수 교수가 경영진·실무 리더·연구자·�
 | 폴더 | 내용 | 상태 |
 |---|---|---|
 | [`claude/`](claude/) | 『클로드 완전정복 100단계』 — 채팅에서 Claude Code, Claude in Chrome, 스킬·연결자·자동화, 부서별 AX까지 | 공개 |
-| [`codex/`](codex/) | Codex로 일을 맡기는 법 | 준비 중 |
+| [`codex/`](codex/) | Codex 완전정복 — Codex로 일을 맡기는 법 | 준비 중 |
 | [`common/`](common/) | 도구와 상관없이 통하는 원칙 · 도구 비교 | 준비 중 |
 
 ## 바로 쓰기
+
+- **웹으로 읽기(단계별): <https://ceoai.kr/aicoding/claude/>** · PDF·EPUB 내려받기도 이곳에서
 
 - 책 원고: [`claude/book/`](claude/book/) — 머리말부터 부록까지 마크다운으로 읽을 수 있습니다.
 - 복사해 쓰는 프롬프트 128개: [`claude/prompts.md`](claude/prompts.md)
@@ -28,6 +30,8 @@ CEO비즈니스스쿨 김문수 교수가 경영진·실무 리더·연구자·�
 - 인기 스킬과 스킬 모음: [`claude/skills.md`](claude/skills.md)
 - 함께 읽을 칼럼(CEO경제신문): [`claude/columns.md`](claude/columns.md)
 - 강의 커리큘럼(10회차 편성): [`claude/curriculum.md`](claude/curriculum.md)
+- 실습 파일(가상 회사 자료): [`claude/samples/`](claude/samples/) · 빈칸 템플릿: [`claude/templates/`](claude/templates/)
+- 변경 기록(날짜 판 번호): [`CHANGELOG.md`](CHANGELOG.md)
 
 ## 전자책(PDF·EPUB) 만들기
 

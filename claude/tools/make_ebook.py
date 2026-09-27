@@ -32,6 +32,20 @@ TITLE = "클로드 완전정복 100단계"
 SUBTITLE = "채팅에서 Claude Code까지, 일을 맡기는 법을 따라 하며 익히는 실전 매뉴얼"
 AUTHOR = "CEO비즈니스스쿨 김문수 교수"
 BASENAME = "claude-100-steps"
+
+
+def _version():
+    """판 표기는 날짜로 한다(YYYY.MM.DD). 같은 날 두 번째 판은 YYYY.MM.DD.2처럼 붙인다."""
+    try:
+        with open(os.path.join(SRC, "VERSION"), encoding="utf-8") as f:
+            v = f.read().strip()
+    except OSError:
+        v = ""
+    return v or datetime.date.today().strftime("%Y.%m.%d")
+
+
+VERSION = _version()
+VERSION_DATE = "%s년 %d월 %d일" % (VERSION[0:4], int(VERSION[5:7]), int(VERSION[8:10]))
 PRETENDARD = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/static/woff2/Pretendard-%s.woff2"
 
 PART_RE = re.compile(r"^# 제(\d+)부 · (.+)$")
@@ -170,6 +184,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .cover .t{font-size:2.6em;font-weight:800;color:var(--navy);line-height:1.25}
 .cover .s{margin-top:1em;color:var(--sub);font-size:1.1em}
 .cover .a{margin-top:4em;font-weight:700;color:var(--accent)}
+.cover .v{margin-top:1.2em;color:var(--sub);font-size:.95em;letter-spacing:.02em}
 .toc ul{list-style:none;padding-left:1em;margin:.2em 0 1em}
 .toc a{text-decoration:none}
 """
@@ -198,11 +213,11 @@ def build():
     appendix_full = appendix.replace("# 부록", "# 부록 {#appendix}", 1) + "\n" + prompts_md(prompts)
 
     os.makedirs(OUT, exist_ok=True)
-    today = datetime.date.today().isoformat()
+    today = VERSION[:10].replace(".", "-")
 
     # ── 한 장짜리 HTML (PDF 원본 겸 웹 열람용)
     cover = ('<section class="cover"><div class="t">%s</div><div class="s">%s</div>'
-             '<div class="a">%s</div></section>') % (TITLE, SUBTITLE, AUTHOR)
+             '<div class="a">%s</div><div class="v">v%s · %s 기준</div></section>') % (TITLE, SUBTITLE, AUTHOR, VERSION, VERSION_DATE)
     body = [cover,
             '<section>%s</section>' % md(front),
             '<section class="toc">%s</section>' % md(toc_md(ol))]
@@ -272,10 +287,11 @@ def build():
                    '<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">'
                    '<dc:identifier id="bid">%s</dc:identifier><dc:title>%s</dc:title>'
                    '<dc:creator>%s</dc:creator><dc:language>ko</dc:language>'
+                   '<dc:description>v%s (%s 기준)</dc:description>'
                    '<meta property="dcterms:modified">%sT00:00:00Z</meta></metadata>'
                    '<manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>'
                    '<item id="css" href="style.css" media-type="text/css"/>%s</manifest>'
-                   '<spine>%s</spine></package>' % (book_id, TITLE, AUTHOR, today, manifest, spine),
+                   '<spine>%s</spine></package>' % (book_id, TITLE, AUTHOR, VERSION, VERSION_DATE, today, manifest, spine),
                    compress_type=zipfile.ZIP_DEFLATED)
 
     # ── PDF (전역 Playwright로 찍는다. 쪽번호는 바닥글로)
