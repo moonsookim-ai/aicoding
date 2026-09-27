@@ -5,6 +5,9 @@
 
 ## claude — 『클로드 완전정복 100단계』
 
+### v2026.09.27.2
+- 표지에 ceobizschool.kr · ceoai.kr 표기
+
 ### v2026.09.27
 - 다섯 편 열 부 구성: 기초 다지기 / Claude Code / Claude in Chrome / 나만의 업무 시스템 / 자동화와 조직 확산
 - Claude Code 주요 `/` 명령어(26단계), Vercel·Cloudflare Pages 배포와 되돌리기(30·31단계), Hugging Face 연결(66단계), API 키 발급(75단계)
