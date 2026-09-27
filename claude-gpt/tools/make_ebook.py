@@ -1,4 +1,4 @@
-"""『클로드 완전정복 100단계』 전자책을 원고(docs/ebook/*.md)에서 EPUB·PDF·HTML로 만든다.
+"""『클로드·GPT 완전정복 100단계』 전자책을 원고(docs/ebook/*.md)에서 EPUB·PDF·HTML로 만든다.
 
 원고는 docs/ebook/ 한 곳에만 있다. 머리말(front.md) → 제1~11부(part01~11.md) → 부록
 (appendix.md) 순서로 엮고, 차례와 「프롬프트 모음」은 원고에서 뽑아 만든다 — 손으로 적어

@@ -3,7 +3,13 @@
 판 번호는 날짜입니다(`vYYYY.MM.DD`). 같은 날 두 번 고치면 `vYYYY.MM.DD.2`처럼 붙입니다.
 번호만 보면 언제 기준으로 확인한 내용인지 알 수 있습니다.
 
-## claude — 『클로드·GPT 완전정복 100단계』 (옛 이름 『클로드 완전정복 100단계』)
+## claude-gpt — 『클로드·GPT 완전정복 100단계』 (옛 이름 『클로드 완전정복 100단계』, 옛 폴더 `claude/`)
+
+### v2026.09.27.7
+- 책 폴더를 `claude/`에서 `claude-gpt/`로 옮김(`claude/`에는 옮긴 곳 안내만 남김), `codex/` 폴더는 책 제4부로 합쳐 지움
+- 퀴즈(`claude-gpt/quiz/`)와 미션(`claude-gpt/missions/`) 폴더와 양식을 새로 둠
+- 프롬프트 모음(146개)·링크·스킬·칼럼·커리큘럼(11부)을 원고에서 다시 뽑는 `claude-gpt/tools/make_extras.py`
+- 원고의 실습 파일 링크와 부록 안내를 새 폴더로 고침
 
 ### v2026.09.27.6
 - 책 이름을 『클로드·GPT 완전정복 100단계』로 바꾸고 ChatGPT·Codex를 함께 다룸(5편 11부 100단계)
@@ -18,7 +24,7 @@
 - 단계별 난이도·선택 단계·화면 확인일, 실습 파일 링크
 - 스스로 점검 해설 300문항, 짧게 도는 코스, 부별 한 장 요약(PDF 한 장씩)
 - 개념 그림 20장, 웹 본문 찾기와 읽음 표시
-- 강사용 안내(`claude/instructor/`), 바깥 주소 점검 도구(`claude/tools/check_ebook_links.py`)
+- 강사용 안내(`claude-gpt/instructor/`), 바깥 주소 점검 도구(`claude-gpt/tools/check_ebook_links.py`)
 
 ### v2026.09.27.4
 - 머리말에 「이 책에서 말하는 코딩」 추가 (제1편이 Claude Code로 가는 기본기인 까닭)

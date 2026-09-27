@@ -1,4 +1,4 @@
-"""『클로드 완전정복 100단계』의 개념 그림을 설계안(JSON)에서 SVG로 그린다.
+"""『클로드·GPT 완전정복 100단계』의 개념 그림을 설계안(JSON)에서 SVG로 그린다.
 
 설계안은 docs/ebook/figures/*.json 에 둔다. 그림 하나는 이렇게 생겼다.
   {"id": "f03-deploy", "step": 30, "before": "### 따라 하기", "caption": "...", "type": "flow", ...}
