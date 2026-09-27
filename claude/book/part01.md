@@ -249,7 +249,7 @@ Claude의 모델은 크게 가볍고 빠른 모델, 균형 잡힌 모델, 가장
 - 회사 일은 회사가 허락한 계정으로 한다. 기능이 안 보이면 요금제와 관리자 설정부터 의심한다.
 - 쉬운 일은 가벼운 모델, 판단이 필요한 일은 깊은 모델과 확장 사고. 그래도 답이 나쁘면 질문부터 손본다.
 
-**더 알아보기** · [데스크톱·모바일 앱](https://claude.com/download) · [요금제 비교](https://claude.com/pricing) · [모델 목록](https://docs.claude.com/en/docs/about-claude/models/overview)
+**더 알아보기** · [데스크톱·모바일 앱](https://claude.com/download) · [요금제 비교](https://claude.com/pricing) · [모델 목록](https://platform.claude.com/docs/en/models/overview)
 
 ## 3단계 · 파일과 이미지 건네기
 
@@ -975,7 +975,7 @@ Claude도 되물을 줄 알지만, 따로 부탁하지 않으면 대개 빈칸�
 - 다섯 칸 질문 틀은 기억 대신 쓰는 점검표다. 비운 항목은 일부러 비운 것이어야 한다.
 - "무엇을"은 동사 하나로 끝낸다. 동사가 둘이면 일을 둘로 나눈다.
 
-**더 알아보기** · [프롬프트 작성 안내](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)
+**더 알아보기** · [프롬프트 작성 안내](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
 
 ## 10단계 · 맥락과 본보기를 함께 건네기
 

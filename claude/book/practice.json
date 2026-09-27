@@ -1,0 +1,562 @@
+{
+ "3": [
+  {
+   "name": "계약서_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/계약서_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "리필 파우치 포장재 공급 계약서(연습용)"
+  }
+ ],
+ "7": [
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "8": [
+  {
+   "name": "민원_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/민원_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "가람시에 들어온 민원 20건"
+  }
+ ],
+ "11": [
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "14": [
+  {
+   "name": "계약서_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/계약서_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "리필 파우치 포장재 공급 계약서(연습용)"
+  }
+ ],
+ "17": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  },
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  },
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "19": [
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  },
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "23": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "24": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "25": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "26": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  },
+  {
+   "name": "CLAUDE_예시.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/CLAUDE_예시.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "내 작업 폴더에 `CLAUDE.md`로 이름을 바꿔 두는 규칙 파일 양식"
+  }
+ ],
+ "27": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "28": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "29": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  }
+ ],
+ "30": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  },
+  {
+   "name": "배포_전_점검표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/배포_전_점검표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "사내 도구를 주소로 올리기 전의 공개 범위·인증키·권한·열어 보기 점검"
+  }
+ ],
+ "31": [
+  {
+   "name": "CLAUDE_예시.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/CLAUDE_예시.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "내 작업 폴더에 `CLAUDE.md`로 이름을 바꿔 두는 규칙 파일 양식"
+  },
+  {
+   "name": "배포_전_점검표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/배포_전_점검표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "사내 도구를 주소로 올리기 전의 공개 범위·인증키·권한·열어 보기 점검"
+  }
+ ],
+ "33": [
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  },
+  {
+   "name": "CLAUDE_예시.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/CLAUDE_예시.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "내 작업 폴더에 `CLAUDE.md`로 이름을 바꿔 두는 규칙 파일 양식"
+  }
+ ],
+ "40": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  }
+ ],
+ "43": [
+  {
+   "name": "주간미팅메모",
+   "url": "https://github.com/moonsookim-ai/aicoding/tree/main/claude/samples/주간미팅메모",
+   "kind": "샘플 자료",
+   "desc": "거래처 미팅 메모 네 건"
+  },
+  {
+   "name": "SKILL.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/SKILL.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "스킬 파일"
+  }
+ ],
+ "44": [
+  {
+   "name": "채용공고_초안.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/채용공고_초안.md",
+   "kind": "샘플 자료",
+   "desc": "물류센터 재고관리 담당 공고 초안"
+  }
+ ],
+ "45": [
+  {
+   "name": "SKILL.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/SKILL.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "스킬 파일"
+  }
+ ],
+ "46": [
+  {
+   "name": "주간미팅메모",
+   "url": "https://github.com/moonsookim-ai/aicoding/tree/main/claude/samples/주간미팅메모",
+   "kind": "샘플 자료",
+   "desc": "거래처 미팅 메모 네 건"
+  },
+  {
+   "name": "채용공고_초안.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/채용공고_초안.md",
+   "kind": "샘플 자료",
+   "desc": "물류센터 재고관리 담당 공고 초안"
+  },
+  {
+   "name": "SKILL.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/SKILL.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "스킬 파일"
+  }
+ ],
+ "47": [
+  {
+   "name": "SKILL.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/SKILL.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "스킬 파일"
+  }
+ ],
+ "49": [
+  {
+   "name": "주간미팅메모",
+   "url": "https://github.com/moonsookim-ai/aicoding/tree/main/claude/samples/주간미팅메모",
+   "kind": "샘플 자료",
+   "desc": "거래처 미팅 메모 네 건"
+  },
+  {
+   "name": "SKILL.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/SKILL.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "스킬 파일"
+  }
+ ],
+ "52": [
+  {
+   "name": "업무_지시서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/업무_지시서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "Cowork에 일을 맡길 때의 폴더 꾸리기, 첫 지시, 본 지시, 끝난 뒤 확인"
+  }
+ ],
+ "53": [
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "54": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  },
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  },
+  {
+   "name": "재고현황.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/재고현황.csv",
+   "kind": "샘플 자료",
+   "desc": "물류센터 두 곳의 품목별 현재고·안전재고·입고예정 26행"
+  },
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "55": [
+  {
+   "name": "연구노트_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/연구노트_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "공공·연구 사례용. 가람시 리필스테이션 시민 설문(400명) 결과표와 연구원 메모"
+  }
+ ],
+ "56": [
+  {
+   "name": "계약서_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/계약서_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "리필 파우치 포장재 공급 계약서(연습용)"
+  }
+ ],
+ "58": [
+  {
+   "name": "업무_지시서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/업무_지시서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "Cowork에 일을 맡길 때의 폴더 꾸리기, 첫 지시, 본 지시, 끝난 뒤 확인"
+  }
+ ],
+ "59": [
+  {
+   "name": "업무_지시서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/업무_지시서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "Cowork에 일을 맡길 때의 폴더 꾸리기, 첫 지시, 본 지시, 끝난 뒤 확인"
+  }
+ ],
+ "60": [
+  {
+   "name": "업무_지시서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/업무_지시서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "Cowork에 일을 맡길 때의 폴더 꾸리기, 첫 지시, 본 지시, 끝난 뒤 확인"
+  }
+ ],
+ "68": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  },
+  {
+   "name": "연결자_권한표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/연결자_권한표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "연결자별 읽기·쓰기·보내기 권한, 뺀 공간, 항상 사람이 누르는 일, 쓰기를 여는 절차"
+  }
+ ],
+ "72": [
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  },
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "73": [
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "74": [
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  },
+  {
+   "name": "재고현황.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/재고현황.csv",
+   "kind": "샘플 자료",
+   "desc": "물류센터 두 곳의 품목별 현재고·안전재고·입고예정 26행"
+  },
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "75": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  },
+  {
+   "name": "민원_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/민원_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "가람시에 들어온 민원 20건"
+  }
+ ],
+ "76": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  },
+  {
+   "name": "민원_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/민원_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "가람시에 들어온 민원 20건"
+  }
+ ],
+ "77": [
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "78": [
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "79": [
+  {
+   "name": "자동화_설계서.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/자동화_설계서.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "손으로 한 순서와 여섯 줄 설계, 트리거·예약 지시·확인 지점·실패 알림·비용 계산"
+  }
+ ],
+ "81": [
+  {
+   "name": "월간매출.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/월간매출.csv",
+   "kind": "샘플 자료",
+   "desc": "12개월(2025년 4월~2026년 3월) × 제품군 5개의 온라인·대리점 매출과 반품"
+  }
+ ],
+ "83": [
+  {
+   "name": "영업_방문기록.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/영업_방문기록.csv",
+   "kind": "샘플 자료",
+   "desc": "영업 사원 네 명의 3월 방문 기록 30건"
+  },
+  {
+   "name": "주간미팅메모",
+   "url": "https://github.com/moonsookim-ai/aicoding/tree/main/claude/samples/주간미팅메모",
+   "kind": "샘플 자료",
+   "desc": "거래처 미팅 메모 네 건"
+  }
+ ],
+ "86": [
+  {
+   "name": "채용공고_초안.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/채용공고_초안.md",
+   "kind": "샘플 자료",
+   "desc": "물류센터 재고관리 담당 공고 초안"
+  }
+ ],
+ "87": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  },
+  {
+   "name": "민원_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/민원_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "가람시에 들어온 민원 20건"
+  }
+ ],
+ "88": [
+  {
+   "name": "계약서_샘플.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/계약서_샘플.md",
+   "kind": "샘플 자료",
+   "desc": "리필 파우치 포장재 공급 계약서(연습용)"
+  }
+ ],
+ "89": [
+  {
+   "name": "재고현황.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/재고현황.csv",
+   "kind": "샘플 자료",
+   "desc": "물류센터 두 곳의 품목별 현재고·안전재고·입고예정 26행"
+  }
+ ],
+ "90": [
+  {
+   "name": "AX_로드맵.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/AX_로드맵.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "한 페이지 AX 로드맵"
+  }
+ ],
+ "93": [
+  {
+   "name": "고객문의_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/고객문의_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "여러 채널로 들어온 고객 문의 40건"
+  },
+  {
+   "name": "민원_샘플.csv",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/samples/민원_샘플.csv",
+   "kind": "샘플 자료",
+   "desc": "가람시에 들어온 민원 20건"
+  },
+  {
+   "name": "평가세트_점수표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/평가세트_점수표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "결과 기준표, 과제 10~20건, 과정 네 질문, 평가 기록, 반영 기준"
+  }
+ ],
+ "94": [
+  {
+   "name": "평가세트_점수표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/평가세트_점수표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "결과 기준표, 과제 10~20건, 과정 네 질문, 평가 기록, 반영 기준"
+  }
+ ],
+ "95": [
+  {
+   "name": "개선루프_기록표.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/개선루프_기록표.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "수정 기록, 개선안, 전후 비교, 변경 기록, 주간·월간 루틴, 드리프트 신호"
+  }
+ ],
+ "100": [
+  {
+   "name": "운영규칙_한장.md",
+   "url": "https://github.com/moonsookim-ai/aicoding/blob/main/claude/templates/운영규칙_한장.md",
+   "kind": "채워 쓰는 양식",
+   "desc": "「우리 회사 Claude 운영 규칙」 한 페이지 양식(열 개 항목)"
+  }
+ ]
+}

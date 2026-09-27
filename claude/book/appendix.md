@@ -44,7 +44,7 @@
 | v2026.09.27 | 2026년 9월 27일 기준으로 기능과 화면, 링크를 확인한 판 |
 | v2026.09.27.2 | 같은 날 두 번째로 고친 판 |
 
-**지금 손에 든 판: v2026.09.27.4** (2026년 9월 27일 기준, 같은 날 네 번째 판)
+**지금 손에 든 판: v2026.09.27.5** (2026년 9월 27일 기준, 같은 날 다섯 번째 판)
 
 새 판은 이럴 때 낸다.
 
@@ -55,7 +55,18 @@
 판마다 무엇이 바뀌었는지는 공개 저장소의 변경 기록에 남긴다.
 <https://github.com/moonsookim-ai/aicoding/blob/main/CHANGELOG.md>
 
-### 이번 판에서 달라진 것 (v2026.09.27.4)
+### 이번 판에서 달라진 것 (v2026.09.27.5)
+
+- PDF에 책갈피(편·부·단계)를 달고, 차례에 쪽번호를 적었다.
+- 단계마다 난이도(★☆☆ 기본 · ★★☆ 실무 · ★★★ 심화)와 「처음엔 건너뛰어도 되는 단계」 표시, 화면이 자주 바뀌는 단계에는 마지막으로 화면을 확인한 날을 적었다.
+- 「스스로 점검」 300문항의 해설을 부록에 모았다. 웹에서는 단계마다 펼쳐 볼 수 있다.
+- 단계마다 그 단계에서 쓰는 실습 파일(샘플 자료와 양식)을 이었다.
+- 부록에 「짧게 도는 코스」와 「부별 한 장 요약」을 더했다. 한 장 요약은 부마다 PDF 한 장으로도 내려받을 수 있다.
+- 구조와 흐름을 한눈에 보여 주는 개념 그림 20장을 더했다.
+- 옮겨 간 공식 문서 주소를 새 주소로 고쳤다.
+- 공개 저장소에 부별 강사용 안내(수업 시간표, 시연, 채점 기준, 슬라이드 뼈대)를 올렸다.
+
+### v2026.09.27.4
 
 - 머리말에 「이 책에서 말하는 코딩」을 더했다. 코드가 나오지 않는 제1편이 왜 코딩의 기본기인지, 각 편이 Claude Code와 어떻게 이어지는지 적었다.
 
@@ -308,6 +319,77 @@
 | 수 | 29·31단계 | 커밋 습관 규칙과, 묻지 않아도 되는 일·반드시 물을 일 목록 |
 | 목 | 32·67단계 | 꼭 지킬 규칙 하나를 옮긴 훅, 저장소 변경을 경영의 말로 쓴 주간 요약 |
 | 금 | 33·94단계 | 완료 보고를 확인하는 순서와 대표 과제 몇 개로 만든 평가 세트 초안 |
+
+## 짧게 도는 코스
+
+백 단계를 다 따라 하면 76시간쯤 걸린다. 하루 한 시간 반씩이면 열 주다. 그만큼 시간을 낼 수 없거나 목적이 분명하다면 아래 코스로 먼저 돈다. 시간은 각 단계의 「걸리는 시간」을 더한 값이다. 코스를 마친 뒤 빠진 단계를 채워 가면 된다.
+
+단계 제목 옆의 난이도(★☆☆ 기본, ★★☆ 실무, ★★★ 심화)와 「처음엔 건너뛰어도 되는 단계」 표시도 길잡이가 된다. 표시가 붙은 12개 단계는 부서별 사례나 특정 도구를 다루는 단계라서, 처음에는 내 일과 맞는 것만 골라 읽어도 뒤에서 막히지 않는다.
+
+### 경영자·리더 반나절 코스 (약 3시간)
+
+직접 도구를 다루기보다 무엇을 맡길 수 있고 어디서 멈춰야 하는지 판단하려는 분을 위한 코스다. 9단계만 따라 하고 나머지는 읽는다.
+
+| 순서 | 단계 | 하는 것 | 시간 |
+|---|---|---|---|
+| 1 | 1단계 | 읽기 | 5분 |
+| 2 | 7단계 | 읽기 | 5분 |
+| 3 | 8단계 | 읽기 | 5분 |
+| 4 | 9단계 | 읽고 따라 하기. 이번 주 안건 하나로 질문을 써 본다 | 40분 |
+| 5 | 23단계 | 읽기 | 10분 |
+| 6 | 35단계 | 읽기 | 10분 |
+| 7 | 41단계 | 읽기 | 5분 |
+| 8 | 51단계 | 읽기 | 5분 |
+| 9 | 61단계 | 읽기 | 5분 |
+| 10 | 71단계 | 읽기 | 5분 |
+| 11 | 77단계 | 읽기 | 10분 |
+| 12 | 81단계 | 읽기 | 10분 |
+| 13 | 90단계 | 읽기. 우리 회사 파일럿 후보를 메모한다 | 15분 |
+| 14 | 91단계 | 읽기 | 10분 |
+| 15 | 93단계 | 읽기 | 5분 |
+| 16 | 94단계 | 읽기 | 10분 |
+| 17 | 98단계 | 읽기 | 10분 |
+| 18 | 100단계 | 읽기. 운영 규칙 열 개 항목을 우리 회사에 대 본다 | 15분 |
+
+### 실무자 첫 2주 코스 (하루 1시간 안팎, 열흘)
+
+채팅과 프로젝트, 결과물 받기까지 매일 쓰는 기본기를 먼저 몸에 붙이는 코스다.
+
+| 날 | 단계 | 손에 남는 것 | 시간 |
+|---|---|---|---|
+| 1일 | 1·2단계 | 내 계정과 모델 설정, 첫 대화 | 65분 |
+| 2일 | 3·4단계 | 파일을 건네 받은 답과, 출처를 눌러 확인한 답 | 55분 |
+| 3일 | 5·8단계 | 업무 프로젝트 하나와 올려도 되는 자료 기준 | 70분 |
+| 4일 | 9·11단계 | 다섯 칸 질문 틀로 쓴 요청과 근거가 먼저 붙은 답 | 75분 |
+| 5일 | 7·13단계 | 틀린 곳을 찾아 고쳐 쓴 결과물 한 건 | 55분 |
+| 6일 | 17단계 | 워드 보고서와 수식이 살아 있는 엑셀 | 50분 |
+| 7일 | 16·20단계 | 대화로 만든 작은 도구 하나 | 55분 |
+| 8일 | 44·46단계 | 첫 스킬 | 90분 |
+| 9일 | 51·52단계 | Cowork 작업 폴더와 첫 결과물 | 55분 |
+| 10일 | 15단계 | 내 업무 프롬프트 다섯 개 | 70분 |
+
+### 직접 만들기 코스 (하루 2시간씩 닷새)
+
+사내 도구를 만들어 동료가 여는 주소까지 가 보고 싶은 분을 위한 코스다. 1·9단계로 요청 쓰는 법만 익히고 곧바로 제3부로 들어간다.
+
+| 날 | 단계 | 손에 남는 것 | 시간 |
+|---|---|---|---|
+| 1일 | 1·9·23단계 | 만들 도구를 한 문장으로 정리한 메모 | 105분 |
+| 2일 | 24·25단계 | 설치를 마친 Claude Code와 첫 화면 | 85분 |
+| 3일 | 26·27단계 | CLAUDE.md와, Claude Code로 정리한 업무 파일 | 130분 |
+| 4일 | 28·29·30단계 | GitHub 저장소와 동료 휴대폰에서 열리는 주소 | 155분 |
+| 5일 | 31·33·34단계 | 되돌릴 길과 검증 기록, 3분 발표 | 160분 |
+
+### 업무 시스템 코스 (하루 1시간씩 두 주)
+
+반복 업무를 스킬로 옮기고, 폴더째 맡기고, 회사 도구와 이은 뒤 정해진 때에 돌게 하는 흐름만 뽑았다. 제1편을 마친 분에게 맞는다.
+
+| 묶음 | 단계 | 손에 남는 것 | 시간 |
+|---|---|---|---|
+| 스킬 | 41·43·44·46·49단계 | 시험 목록을 통과한 스킬 하나 | 195분 |
+| Cowork | 51·52·58·59단계 | 작업 폴더와 확인 기록 | 110분 |
+| 연결자 | 61·63·64·68단계 | 연결한 도구 둘과 권한 표 | 125분 |
+| 자동화 | 71·72·74·77·78단계 | 정해진 때 도는 흐름과 실패 알림 | 185분 |
 
 ## 진도 체크 시트
 
@@ -858,6 +940,10 @@ API 비용이 더해져 나간다. 가장 자주 빠지는 것은 부서 카드�
 | `연결자_권한표.md` | 연결자별 읽기·쓰기·보내기 권한과 항상 사람이 누르는 일 | 68 |
 | `배포_전_점검표.md` | 사내 도구를 주소로 올리기 전의 공개 범위·인증키·권한·열어 보기 점검 | 30·31 |
 
+### 강의에 쓰는 분께 (`claude/instructor`)
+
+이 책으로 수업을 여는 분을 위해 부마다 강사용 안내를 한 파일씩 올려 두었다. 이 부의 목표, 단계별 수업 시간표, 꼭 보여 줄 시연, 과제 채점 기준(우수·통과·보완), 슬라이드 뼈대, 자주 나오는 질문이 들어 있다. 시간표는 각 단계의 「걸리는 시간」을 바탕으로 짰으니, 수업 길이에 맞춰 부별 한 장 요약과 함께 줄이거나 늘려 쓴다.
+
 ## 주요 소스와 링크
 
 기능과 화면은 자주 바뀐다. 책과 화면이 다르면 아래 공식 문서가 기준이다. 주소는 2026년 9월에 열리는 것을 확인했다.
@@ -871,7 +957,7 @@ API 비용이 더해져 나간다. 가장 자주 빠지는 것은 부서 카드�
 | 도움말: 프로젝트 만들고 관리하기 | <https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects> | 5단계 |
 | 도움말: 새 기능 소식(릴리스 노트) | <https://support.claude.com/en/articles/12138966-release-notes> | 99단계 |
 | 서비스 상태 | <https://status.claude.com> | 막힐 때 |
-| 프롬프트 작성 안내 | <https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview> | 9~15단계 |
+| 프롬프트 작성 안내 | <https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview> | 9~15단계 |
 | Claude Code 문서 | <https://code.claude.com/docs> | 제3부 |
 | Claude Code 설치 | <https://code.claude.com/docs/en/setup> | 25단계 |
 | Claude Code 명령어 전체 목록 | <https://code.claude.com/docs/en/commands> | 26단계 |
@@ -884,15 +970,15 @@ API 비용이 더해져 나간다. 가장 자주 빠지는 것은 부서 카드�
 | Claude Code 비용 관리 | <https://code.claude.com/docs/en/costs> | 97단계 |
 | Claude Code 보안 | <https://code.claude.com/docs/en/security> | 31단계, 98단계 |
 | Claude Code 변경 기록 | <https://code.claude.com/docs/en/changelog> | 99단계 |
-| Claude in Chrome | <https://claude.com/chrome> | 제4부 |
+| Claude in Chrome | <https://claude.com/claude-in-chrome> | 제4부 |
 | Claude Cowork | <https://claude.com/product/cowork> | 제6부 |
-| 연결자·플러그인 목록 | <https://claude.com/connectors> | 제7부 |
+| 연결자·플러그인 목록 | <https://claude.com/marketplace/connectors-plugins> | 제7부 |
 | MCP 공식 안내 | <https://modelcontextprotocol.io> | 62단계 |
 | MCP 서버 예시 모음 | <https://github.com/modelcontextprotocol/servers> | 62단계 |
 | Hugging Face MCP 설정 | <https://huggingface.co/settings/mcp> | 66단계 |
 | Claude Console(API 키·결제·사용량) | <https://platform.claude.com> | 75단계, 96~97단계 |
 | API 개요 | <https://platform.claude.com/docs/en/api/overview> | 96단계 |
-| 모델 목록 | <https://docs.claude.com/en/docs/about-claude/models/overview> | 2단계, 75단계 |
+| 모델 목록 | <https://platform.claude.com/docs/en/models/overview> | 2단계, 75단계 |
 | Zapier의 Claude 연동 | <https://zapier.com/apps/anthropic-claude/integrations> | 75단계 |
 | n8n 문서 | <https://docs.n8n.io> | 75단계 |
 | GitHub 시작하기 | <https://docs.github.com/en/get-started> | 28~29단계 |
@@ -904,7 +990,7 @@ API 비용이 더해져 나간다. 가장 자주 빠지는 것은 부서 카드�
 | Vercel 즉시 되돌리기 | <https://vercel.com/docs/instant-rollback> | 31단계 |
 | Anthropic 소식 | <https://www.anthropic.com/news> | 99단계 |
 | Anthropic 엔지니어링 블로그 | <https://www.anthropic.com/engineering> | 99단계 |
-| Claude Academy(무료 강좌) | <https://www.anthropic.com/learn> | 전체 |
+| Claude Academy(무료 강좌) | <https://academy.claude.com/> | 전체 |
 | Claude Code 공개 저장소(이슈·소식) | <https://github.com/anthropics/claude-code> | 제3부 |
 | Claude 쿡북(예제 코드) | <https://github.com/anthropics/claude-cookbooks> | 96단계 |
 | 김문수 교수 칼럼 모음 | <https://ceoai.kr/leadership2/reads/> | 칼럼 인용 |
@@ -918,12 +1004,12 @@ API 비용이 더해져 나간다. 가장 자주 빠지는 것은 부서 카드�
 | 무엇 | 주소 |
 |---|---|
 | 스킬이란 무엇인가(도움말) | <https://support.claude.com/en/articles/12512176-what-are-skills> |
-| Claude 앱에서 스킬 쓰기와 올리기 | <https://support.claude.com/en/articles/12512180-using-skills-in-claude> |
+| Claude 앱에서 스킬 쓰기와 올리기 | <https://support.claude.com/en/articles/12512180-use-skills-in-claude> |
 | Claude Code에서 스킬 쓰기 | <https://code.claude.com/docs/en/skills> |
-| API에서 스킬 쓰기 | <https://docs.claude.com/en/api/skills-guide> |
-| 스킬 개념 설명(개발자 문서) | <https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview> |
+| API에서 스킬 쓰기 | <https://platform.claude.com/docs/en/build-with-claude/skills-guide> |
+| 스킬 개념 설명(개발자 문서) | <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview> |
 | 스킬을 만든 배경(Anthropic 엔지니어링 글) | <https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills> |
-| 플러그인 마켓플레이스 | <https://claude.com/plugins> |
+| 플러그인 마켓플레이스 | <https://claude.com/marketplace/plugins> |
 
 **Anthropic 공개 스킬 저장소** — <https://github.com/anthropics/skills>
 
@@ -949,7 +1035,7 @@ Claude Code에서는 `/plugin marketplace add anthropics/skills`로 이 저장�
 
 **개발 작업용 스킬 묶음: Superpowers** — <https://github.com/obra/superpowers>
 
-계획 세우기(`writing-plans`), 체계적인 디버깅(`systematic-debugging`), 테스트 먼저 쓰기(`test-driven-development`), 끝났다고 말하기 전 확인(`verification-before-completion`), 서브에이전트로 나눠 개발하기(`subagent-driven-development`) 같은 스킬이 들어 있다. 공식 플러그인 마켓플레이스(https://claude.com/plugins/superpowers)에서 설치할 수 있다. 33단계의 "다 됐다는 말을 그대로 믿지 않는다"와 같은 생각을 스킬로 만든 예다.
+계획 세우기(`writing-plans`), 체계적인 디버깅(`systematic-debugging`), 테스트 먼저 쓰기(`test-driven-development`), 끝났다고 말하기 전 확인(`verification-before-completion`), 서브에이전트로 나눠 개발하기(`subagent-driven-development`) 같은 스킬이 들어 있다. 공식 플러그인 마켓플레이스(https://claude.com/marketplace/plugins/superpowers)에서 설치할 수 있다. 33단계의 "다 됐다는 말을 그대로 믿지 않는다"와 같은 생각을 스킬로 만든 예다.
 
 **모음 목록(커뮤니티)**
 

@@ -121,7 +121,7 @@
 - Claude는 내 권한 밖을 보지 못한다. 범위가 넓어 보이면 내 권한이 넓은 것이다.
 - 요약을 받기 전에 읽은 자료 목록부터 받는다. 재료가 맞아야 답도 맞는다.
 
-**더 알아보기** · [연결자·플러그인 목록](https://claude.com/connectors)
+**더 알아보기** · [연결자·플러그인 목록](https://claude.com/marketplace/connectors-plugins)
 
 ## 62단계 · MCP, 모든 연결의 공통 규격
 

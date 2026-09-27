@@ -197,7 +197,7 @@
 - 스킬이 보이지 않으면 설정, 요금제, 회사 관리자 설정 순서로 확인한다.
 - 기본 스킬은 파일 만드는 법은 알지만 우리 회사 기준은 모른다. 그 빈틈을 내 스킬이 채운다.
 
-**더 알아보기** · [Claude 앱에서 스킬 쓰기](https://support.claude.com/en/articles/12512180-using-skills-in-claude) · [Anthropic 공개 스킬 저장소](https://github.com/anthropics/skills) · 부록 「인기 스킬과 스킬 모음」
+**더 알아보기** · [Claude 앱에서 스킬 쓰기](https://support.claude.com/en/articles/12512180-use-skills-in-claude) · [Anthropic 공개 스킬 저장소](https://github.com/anthropics/skills) · 부록 「인기 스킬과 스킬 모음」
 
 ## 43단계 · SKILL.md를 이루는 네 마디
 

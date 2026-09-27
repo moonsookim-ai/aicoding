@@ -122,7 +122,7 @@ Claude in Chrome을 고른다면 사람이 직접 눌러야 할 버튼도 함께
 - 내가 로그인한 곳이라면 Claude도 내 이름으로 움직인다.
 - 처음에는 읽기 위주의 일부터 맡기고, 되돌리기 어려운 버튼은 사람이 누른다.
 
-**더 알아보기** · [Claude in Chrome](https://claude.com/chrome)
+**더 알아보기** · [Claude in Chrome](https://claude.com/claude-in-chrome)
 
 ## 36단계 · 설치하고 문을 몇 개만 열어 두기
 

@@ -34,6 +34,7 @@ CEO비즈니스스쿨 김문수 교수가 경영진·실무 리더·연구자·�
 - 함께 읽을 칼럼(CEO경제신문): [`claude/columns.md`](claude/columns.md)
 - 강의 커리큘럼(10회차 편성): [`claude/curriculum.md`](claude/curriculum.md)
 - 실습 파일(가상 회사 자료): [`claude/samples/`](claude/samples/) · 빈칸 템플릿: [`claude/templates/`](claude/templates/)
+- 강사용 안내(부별 수업 시간표·시연·채점 기준·슬라이드 뼈대): [`claude/instructor/`](claude/instructor/)
 - 변경 기록(날짜 판 번호): [`CHANGELOG.md`](CHANGELOG.md)
 
 ## 전자책(PDF·EPUB) 만들기

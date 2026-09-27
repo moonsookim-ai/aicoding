@@ -83,6 +83,173 @@ def tag_headings(text):
     return "\n".join(lines) + "\n"
 
 
+# ── 단계에 덧붙이는 것: 난이도·선택 표시, 화면 확인일, 실습 파일, 스스로 점검 해설 ─────────────
+# 원고(partNN.md)는 그대로 두고, 곁 파일에서 읽어 PDF·EPUB·웹이 같은 규칙으로 끼워 넣는다.
+#   docs/ebook/checks/partNN.md   단계별 난이도(1~3)·선택 여부·점검 해설
+#   docs/ebook/practice.json      단계별 실습 파일(GitHub 공개 저장소의 샘플 자료와 양식)
+#   docs/ebook/checked.json       화면이 자주 바뀌는 단계를 마지막으로 확인한 날
+STARS = {1: "★☆☆ 기본", 2: "★★☆ 실무", 3: "★★★ 심화"}
+
+
+def with_figures(front, parts):
+    """개념 그림(docs/ebook/figures/*.json)을 머리말과 부 원고에 끼운다. 번호는 읽는 순서대로."""
+    import figures
+    texts, placed, missing = figures.place([("front", front)] + [("part", p) for p in parts], figures.load(SRC))
+    if missing:
+        sys.exit("그림을 끼울 제목을 찾지 못했다: %s" % missing)
+    return texts[0], texts[1:]
+
+
+def load_extras():
+    import json
+    info = {}
+    cdir = os.path.join(SRC, "checks")
+    for name in sorted(os.listdir(cdir)) if os.path.isdir(cdir) else []:
+        with open(os.path.join(cdir, name), encoding="utf-8") as f:
+            for block in re.split(r"(?m)^## (?=\d+\s*$)", f.read())[1:]:
+                head, _, rest = block.partition("\n")
+                n = int(head)
+                lv = re.search(r"(?m)^난이도:\s*(\d)", rest)
+                op = re.search(r"(?m)^선택:\s*(\S+)", rest)
+                answers = [a.strip() for a in re.findall(r"(?m)^\d+\.\s+(.+)$", rest)]
+                info[n] = {"level": int(lv.group(1)) if lv else None, "optional": bool(op and op.group(1) == "예"),
+                           "answers": answers}
+    for fname, key in (("practice.json", "files"), ("checked.json", "checked")):
+        path = os.path.join(SRC, fname)
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                for k, v in json.load(f).items():
+                    info.setdefault(int(k), {})[key] = v
+    return info
+
+
+def enrich(text, extras, mode):
+    """부 원고에 단계별 덧붙임을 끼운다. mode="pdf"면 해설을 부록으로 보내는 고리를, "web"이면 펼쳐 보는 해설을 단다."""
+    out, cur, in_check = [], None, False
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        m = LESSON_RE.match(line)
+        if m:
+            cur = extras.get(int(m.group(1)), {})
+            cur_no = int(m.group(1))
+        if cur is not None and line.startswith("**걸리는 시간**"):
+            tags = []
+            if cur.get("level"):
+                tags.append("난이도 " + STARS[cur["level"]])
+            if cur.get("optional"):
+                tags.append("처음엔 건너뛰어도 되는 단계")
+            if cur.get("checked"):
+                tags.append("화면 확인 " + cur["checked"])
+            line += "".join(" · " + t for t in tags)
+        if cur is not None and line.strip() == "### 스스로 점검":
+            files = cur.get("files") or []
+            if files:
+                out += ["### 실습 파일", "",
+                        "공개 저장소에 올려 둔 가공 자료와 양식이다. 회사 자료 대신 먼저 이것으로 해 본다.", ""]
+                out += ["- %s [%s](%s) · %s" % (f["kind"], f["name"], f["url"], f["desc"]) for f in files]
+                out.append("")
+            in_check = True
+        out.append(line)
+        if in_check and line.startswith("- ") and not (i + 1 < len(lines) and lines[i + 1].startswith("- ")):
+            in_check = False
+            answers = cur.get("answers") or []
+            if answers and mode == "web":
+                out += ["", '<details class="bk-check" markdown="1"><summary>점검 해설 보기</summary>', ""]
+                out += ["%d. %s" % (k + 1, a) for k, a in enumerate(answers)]
+                out += ["", "</details>"]
+            elif answers:
+                out += ["", "해설은 부록 [「스스로 점검 해설」](#c%d)에 있다." % cur_no]
+    return "\n".join(out) + "\n"
+
+
+def checks_md(ol, extras):
+    out = ["## 스스로 점검 해설", "",
+           "단계마다 끝에 둔 「스스로 점검」 세 문항을 어떻게 판단하면 되는지 적었다. 통과로 볼 수 있는 모습과, "
+           "아직이라면 다시 볼 곳을 함께 적었다.", ""]
+    for pno, ptitle, lessons in ol:
+        out += ["### 제%d부 · %s" % (pno, ptitle), ""]
+        for lno, ltitle in lessons:
+            ans = extras.get(lno, {}).get("answers") or []
+            if not ans:
+                continue
+            out += ["**[%d단계 · %s](#l%d)**" % (lno, ltitle, lno), "{: #c%d }" % lno, ""]
+            out += ["%d. %s" % (k + 1, a) for k, a in enumerate(ans)]
+            out.append("")
+    return "\n".join(out) + "\n"
+
+
+# ── 부별 한 장 요약: 단계마다 핵심 한 문장과 난이도, 이 부의 과제를 한 쪽에 모은다 ────────────
+SITE_BOOK = "https://ceoai.kr/aicoding/claude"
+
+
+def part_facts(text):
+    cores, cur = {}, None
+    for line in text.splitlines():
+        m = LESSON_RE.match(line)
+        if m:
+            cur = int(m.group(1))
+            continue
+        if cur and cur not in cores and line.startswith("> "):
+            cores[cur] = line[2:].strip()
+    task = text.split("### 이 부의 과제", 1)[1] if "### 이 부의 과제" in text else ""
+    task = re.split(r"(?m)^#{1,3} ", task, 1)[0]
+    # 부마다 적는 꼴이 조금씩 다르다: **과제 이름.** / **과제명**: / **과제: 이름** / 이름 없이 설명만
+    name = (re.search(r"\*\*과제(?: 이름|명)?[.:：]?\*\*[.:：]?\s*(.+)", task)
+            or re.search(r"\*\*과제[:：]\s*(.+?)\*\*", task))
+    todo = re.search(r"\*\*(?:할 일|하는 일)[.:：]?\*\*[.:：]?\s*(.+)", task)
+    if not todo:
+        head = re.split(r"\*\*제출물|제출물은", task, 1)[0]  # 과제 설명은 제출물 앞에만 있다
+        paras = [x.strip() for x in head.split("\n\n") if x.strip()]
+        rest = [x for x in paras if not x.startswith(("**", "|", "-", "1.")) and "\n" not in x]
+        todo_text = rest[0] if rest else ""
+    else:
+        todo_text = todo.group(1).strip()
+    crit = []
+    m = re.search(r"완료 기준[^\n]*\n+((?:[-|].*\n?)+)", task)
+    if m:
+        for line in m.group(1).splitlines():
+            if line.startswith("- "):
+                crit.append(line[2:].strip())
+            elif line.startswith("|") and not re.match(r"^\|[\s:|-]+\|$", line):
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                if len(cells) >= 2 and cells[0] not in ("항목", "번호"):
+                    crit.append("%s: %s" % (cells[0], cells[-1]))
+    name_text = name.group(1).strip().rstrip("*").strip() if name else ""
+    if not name_text:
+        name_text = "수료 과제" if "수료 과제" in todo_text else ""
+    return {"cores": cores, "task": name_text, "todo": todo_text, "criteria": crit}
+
+
+def doing_of(appendix):
+    """부록 첫 표(편 | 부 | 단계 | 이 부에서 하는 일)에서 부마다 하는 일을 읽는다."""
+    res = {}
+    for m in re.finditer(r"(?m)^\|[^|]*\| (\d+) [^|]+\| \d+~\d+ \| ([^|]+) \|$", appendix):
+        res[int(m.group(1))] = m.group(2).strip()
+    return res
+
+
+def summary_md(pno, ptitle, lessons, facts, extras, doing, web_links=False):
+    link = (lambda n: "%s/step-%03d/" % (SITE_BOOK, n)) if web_links else (lambda n: "#l%d" % n)
+    out = ["### 제%d부 · %s" % (pno, ptitle), "",
+           "%s · %d~%d단계%s" % (pyeon_title(pno), lessons[0][0], lessons[-1][0],
+                                 (" · " + doing[pno]) if doing.get(pno) else ""), "",
+           "| 단계 | 핵심 한 문장 | 난이도 |", "|---|---|---|"]
+    for lno, ltitle in lessons:
+        e = extras.get(lno, {})
+        lv = STARS.get(e.get("level"), "").split(" ")[0] + (" 선택" if e.get("optional") else "")
+        out.append("| [%d · %s](%s) | %s | %s |" % (lno, ltitle.replace("|", "/"), link(lno),
+                                                   facts["cores"].get(lno, "").replace("|", "/"), lv.strip()))
+    if facts["task"]:
+        out += ["", "**이 부의 과제 · %s** %s" % (facts["task"], facts["todo"])]
+    if facts["criteria"]:
+        out += ["", "**완료 기준**", ""] + ["- " + c for c in facts["criteria"]]
+    return "\n".join(out) + "\n"
+
+
+def pyeon_title(pno):
+    return next(t for t, a, b in PYEON if a <= pno <= b)
+
+
 STEP_REF = re.compile(r"(?<![\d·~])(\d{1,3}(?:[·~]\d{1,3})*)단계")
 CELL_REFS = re.compile(r"^\s*\d{1,3}(?:[·~]\d{1,3})*단계(?:\s*,\s*\d{1,3}(?:[·~]\d{1,3})*단계)*\s*$")
 KEEP = re.compile(r"(\[[^\]]*\]\([^)]*\)|`[^`]*`)")
@@ -238,6 +405,9 @@ def md(text, xhtml=False):
         output_format="xhtml" if xhtml else "html")
 
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import figures as _figures  # noqa: E402
+
 CSS = """
 :root{--ink:#1b2233;--sub:#5b6478;--line:#d9dde6;--accent:#b8871c;--navy:#15223d;--code:#f5f3ee}
 html{font-size:10.5pt}
@@ -271,7 +441,8 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .cover .w{margin-top:.6em;color:var(--navy);font-size:1em;font-weight:600;letter-spacing:.03em}
 .toc ul{list-style:none;padding-left:1em;margin:.2em 0 1em}
 .toc a{text-decoration:none}
-"""
+.toc .pg{float:right;color:var(--sub);font-variant-numeric:tabular-nums;padding-left:.6em}
+""" + _figures.LIGHT_CSS
 
 PRINT_CSS = """
 @page{size:182mm 257mm;margin:22mm 20mm 24mm}
@@ -285,6 +456,125 @@ td a{overflow-wrap:anywhere}
 """
 
 
+def finish_pdf(pdf_path, printed, render, ol):
+    """차례에 쪽번호를 달고, PDF 보기 프로그램 옆에 뜨는 책갈피를 편·부·단계로 정리한다.
+
+    쪽번호는 한 번 찍어 봐야 안다. 찍은 PDF에서 각 단계가 몇 쪽에 떨어졌는지 읽어 차례에 적고
+    다시 찍는다. 번호를 적어도 줄바꿈이 달라지지 않게 짜 두었지만, 혹시 밀리면 한 번 더 맞춘다.
+    PyMuPDF가 없으면 쪽번호와 책갈피 없이 둔다.
+    """
+    try:
+        import pymupdf
+    except ImportError:
+        print("PyMuPDF가 없어 차례 쪽번호와 책갈피를 건너뛴다 (pip install pymupdf)")
+        return
+    toc_re = re.compile(r'(<section class="toc">)(.*?)(</section>)', re.S)
+
+    def pages():
+        with pymupdf.open(pdf_path) as d:
+            return {k: v["page"] + 1 for k, v in d.resolve_names().items()}
+
+    def numbered(pg):
+        def one(m):
+            key = m.group(1)
+            return m.group(0) + ('<span class="pg">%d</span>' % pg[key] if key in pg else "")
+        return toc_re.sub(lambda t: t.group(1) + re.sub(r'<a href="#([a-z]+\d*)">.*?</a>', one, t.group(2)) + t.group(3),
+                          printed, count=1)
+
+    pg = pages()
+    for _ in range(3):
+        if not render(numbered(pg)):
+            return
+        now = pages()
+        if now == pg:
+            break
+        pg = now
+    else:
+        print("차례 쪽번호가 끝내 맞지 않았다 - 확인할 것")
+
+    # 책갈피: 크로미움이 제목으로 만든 목록에서 부·단계·부 마무리, 머리말·부록의 절만 남기고 편으로 묶는다.
+    d = pymupdf.open(pdf_path)
+    raw = d.get_toc(simple=True)
+    first = {a: t for t, a, _ in PYEON}
+    toc, top = [], None
+    for lvl, title, page_no in raw:
+        m = PART_RE.match("# " + title)
+        if lvl == 1:
+            if m and int(m.group(1)) in first:
+                toc.append([1, first[int(m.group(1))], page_no])
+            top = "part" if m else title
+            toc.append([2 if m else 1, title, page_no])
+        elif lvl == 2:
+            toc.append([3 if top == "part" else 2, title, page_no])
+    d.set_toc(toc)
+    d.set_metadata({"title": TITLE, "author": AUTHOR, "subject": SUBTITLE, "keywords": "v" + VERSION})
+    tmp = pdf_path + ".tmp"
+    d.save(tmp, garbage=3, deflate=True)
+    d.close()
+    os.replace(tmp, pdf_path)
+    print("차례 쪽번호 %d곳 · 책갈피 %d개" % (sum(1 for k in pg if k[0] in "lp" or k == "appendix"), len(toc)))
+
+
+SUMMARY_CSS = """
+@page{size:A4;margin:13mm 14mm 12mm}
+body{font-family:Pretendard,sans-serif;color:#1b2233;font-size:8.6pt;line-height:1.5;word-break:keep-all;margin:0}
+.top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2.5px solid #b8871c;padding-bottom:5px;margin-bottom:8px}
+.top b{font-size:10pt;color:#15223d}.top span{color:#5b6478;font-size:8pt}
+h3{font-size:15pt;color:#15223d;margin:2px 0 3px}
+p{margin:4px 0}
+table{border-collapse:collapse;width:100%;margin:7px 0}
+th,td{border:1px solid #d9dde6;padding:3.5px 6px;text-align:left;vertical-align:top}
+th{background:#eef1f6;font-size:8pt}
+td:first-child{width:34%;font-weight:600}td:last-child{width:9%;white-space:nowrap;color:#b8871c}
+a{color:#15223d;text-decoration:none}
+ul{margin:3px 0;padding-left:1.2em}li{margin:1px 0}
+.foot{margin-top:8px;border-top:1px solid #d9dde6;padding-top:4px;color:#5b6478;font-size:7.6pt;display:flex;justify-content:space-between}
+"""
+
+
+def one_pagers(node, env, faces, ol, facts, extras, doing):
+    """부마다 한 장짜리 요약 PDF(dist/ebook/summary/part-NN.pdf). 링크는 웹 쪽 주소로 건다."""
+    import json
+    sdir = os.path.join(OUT, "summary")
+    os.makedirs(sdir, exist_ok=True)
+    jobs = []
+    for (pno, ptitle, lessons), fx in zip(ol, facts):
+        body = md(summary_md(pno, ptitle, lessons, fx, extras, doing, web_links=True))
+        page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>%s%s</style></head><body>'
+                '<div class="top"><b>%s · 한 장 요약</b><span>%s · v%s</span></div>%s'
+                '<div class="foot"><span>%s/part-%02d/</span><span>ceobizschool.kr · ceoai.kr</span></div></body></html>'
+                ) % ("".join(faces), SUMMARY_CSS, TITLE, AUTHOR, VERSION, body, SITE_BOOK, pno)
+        src = os.path.join(sdir, ".part-%02d.html" % pno)
+        with open(src, "w", encoding="utf-8") as f:
+            f.write(page)
+        jobs.append([src, os.path.join(sdir, "part-%02d.pdf" % pno)])
+    script = r"""
+const {chromium} = require('playwright');
+(async () => {
+  const b = await chromium.launch({executablePath: process.env.CHROME || undefined});
+  const p = await b.newPage();
+  for (const [src, out] of JSON.parse(process.argv[1])) {
+    await p.goto('file://' + src, {waitUntil: 'networkidle'});
+    await p.evaluate(() => document.fonts.ready);
+    await p.pdf({path: out, preferCSSPageSize: true, printBackground: true});
+  }
+  await b.close();
+})().catch(e => { console.error(e.message); process.exit(1); });
+"""
+    r = subprocess.run([node, "-e", script, json.dumps(jobs)], env=env, capture_output=True, text=True)
+    if r.returncode:
+        print("부별 한 장 요약을 건너뛴다:", r.stderr.strip()[:300])
+        return
+    try:
+        import pymupdf
+        over = [os.path.basename(out) for _, out in jobs if pymupdf.open(out).page_count > 1]
+        if over:
+            print("한 장을 넘긴 요약:", over)
+    except ImportError:
+        pass
+    print("부별 한 장 요약 %d개" % len(jobs))
+
+
 def build():
     front = read("front.md")
     parts = [read("part%02d.md" % i) for i in range(1, 11)]
@@ -295,10 +585,21 @@ def build():
         sys.exit("원고에 빠진 단계가 있다: %s" % missing)
     prompts = collect_prompts(parts)
     titles = {l: t for _, _, ls in ol for l, t in ls}
+    extras = load_extras()
+    raw_parts = parts
+    front, parts = with_figures(front, parts)
     front = link_steps(front, titles)
-    parts = [link_steps(p, titles) for p in parts]
+    parts = [link_steps(enrich(p, extras, "pdf"), titles) for p in parts]
     appendix = link_steps(appendix, titles, prose=True)
-    appendix_full = appendix.replace("# 부록", "# 부록 {#appendix}", 1) + "\n" + prompts_md(prompts)
+    doing = doing_of(appendix)
+    facts = [part_facts(p) for p in raw_parts]
+    summaries = ["## 부별 한 장 요약", "",
+                 "부마다 단계의 핵심 한 문장과 난이도, 이 부의 과제를 한 쪽에 모았다. 복습할 때, 팀에 나눠 줄 때 쓴다. "
+                 "웹에서는 부마다 한 장짜리 PDF로도 내려받을 수 있다.", ""]
+    for (pno, ptitle, lessons), fx in zip(ol, facts):
+        summaries.append(summary_md(pno, ptitle, lessons, fx, extras, doing))
+    appendix_full = (appendix.replace("# 부록", "# 부록 {#appendix}", 1) + "\n" + "\n".join(summaries)
+                     + "\n" + checks_md(ol, extras) + "\n" + prompts_md(prompts))
 
     os.makedirs(OUT, exist_ok=True)
     today = VERSION[:10].replace(".", "-")
@@ -331,6 +632,7 @@ def build():
     where = {"p%d" % pno: "part%02d.xhtml" % pno for pno, _, _ in ol}
     where.update({"l%d" % l: "part%02d.xhtml" % pno for pno, _, ls in ol for l, _ in ls})
     where["appendix"] = "appendix.xhtml"
+    where.update({"c%d" % l: "appendix.xhtml" for _, _, ls in ol for l, _ in ls})
 
     def fix_links(x):
         return re.sub(r'href="#([a-z]+\d*)"',
@@ -392,7 +694,7 @@ const {chromium} = require('playwright');
   const p = await b.newPage();
   await p.goto('file://' + process.argv[1], {waitUntil: 'networkidle'});
   await p.evaluate(() => document.fonts.ready);
-  await p.pdf({path: process.argv[2], preferCSSPageSize: true, printBackground: true,
+  await p.pdf({path: process.argv[2], preferCSSPageSize: true, printBackground: true, outline: true, tagged: true,
     displayHeaderFooter: true, headerTemplate: '<span></span>',
     footerTemplate: '<div style="width:100%;text-align:center;font-size:8px;color:#888"><span class="pageNumber"></span></div>'});
   await b.close();
@@ -412,17 +714,24 @@ const {chromium} = require('playwright');
     if len(faces) < 4:
         print("Pretendard를 받지 못했다 - PDF가 시스템 글꼴로 찍힌다")
     pdf_src = os.path.join(OUT, ".print.html")
-    with open(pdf_src, "w", encoding="utf-8") as f:
-        f.write(page.replace("<style>", "<style>" + "".join(faces), 1))
     if node:
         env = dict(os.environ)
         env.setdefault("NODE_PATH", subprocess.run([node, "-e", "process.stdout.write(require('path').join(process.execPath,'..','..','lib','node_modules'))"],
                                                    capture_output=True, text=True).stdout)
-        r = subprocess.run([node, "-e", script, pdf_src, pdf_path], env=env, capture_output=True, text=True)
-        if r.returncode == 0:
+        def render(html_text):
+            with open(pdf_src, "w", encoding="utf-8") as f:
+                f.write(html_text)
+            r = subprocess.run([node, "-e", script, pdf_src, pdf_path], env=env, capture_output=True, text=True)
+            if r.returncode:
+                print("PDF를 건너뛴다:", r.stderr.strip()[:300])
+            return r.returncode == 0
+
+        printed = page.replace("<style>", "<style>" + "".join(faces), 1)
+        if render(printed):
             made.append(pdf_path)
-        else:
-            print("PDF를 건너뛴다:", r.stderr.strip()[:300])
+            finish_pdf(pdf_path, printed, render, ol)
+    if node and faces:
+        one_pagers(node, env, faces, ol, facts, extras, doing)
     print("단계 %d개 · 프롬프트 %d개" % (sum(len(ls) for _, _, ls in ol), len(prompts)))
     for p in made:
         print(" ", os.path.relpath(p, ROOT), "%.0f KB" % (os.path.getsize(p) / 1024))
